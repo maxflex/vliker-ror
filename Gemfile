@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 
@@ -56,10 +58,7 @@ gem 'react-rails'
 gem 'colorize'
 
 group :production do
-  # Use Unicorn as the app server
-  gem 'unicorn'
-  # Use postgresql as the database for Active Record
-  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do

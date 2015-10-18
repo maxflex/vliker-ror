@@ -25,5 +25,6 @@ module Vliker
 
     config.assets.paths << Rails.root.join('app', 'assets', 'templates')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    # config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end

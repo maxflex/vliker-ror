@@ -4,22 +4,22 @@ angular.module 'VLiker'
       controller : 'MainCtrl'
       menu       : false
     .when '/wall',
-      templateUrl: "<%= asset_path('wall.html') %>"
+      templateUrl: 'wall.html'
       controller : 'WallCtrl'
       menu       : 1
     .when '/stats',
-      templateUrl: "<%= asset_path('stats.html') %>"
+      templateUrl: 'stats.html'
       controller : 'StatsCtrl'
       menu       : 2
     .when '/store',
-      templateUrl: "<%= asset_path('store.html') %>"
+      templateUrl: 'store.html'
       controller : 'MainCtrl'
       menu       : 3
     .when '/instr',
-      templateUrl: "<%= asset_path('construction.html') %>"
+      templateUrl: 'construction.html'
       menu       : 4
     .when '/start',
-      templateUrl: "<%= asset_path('blocks.html') %>"
+      templateUrl: 'blocks.html'
       controller : 'BlocksCtrl'
     .otherwise
       redirectTo : '/'

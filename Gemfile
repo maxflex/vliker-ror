@@ -50,12 +50,11 @@ gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 # https://github.com/hiravgandhi/angularjs-rails
 gem 'angularjs-rails'
 gem 'ng-rails-csrf'
-
-# https://github.com/reactjs/react-rails
-# rails g react:install
-gem 'react-rails'
+gem 'angular-rails-templates'
 
 gem 'colorize'
+
+gem 'sprockets', '2.12.3'
 
 group :production do
   gem 'rails_12factor'

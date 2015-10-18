@@ -27,4 +27,7 @@
 //= require bootbox.js/bootbox
 //= require nprogress/nprogress
 //
+//= require angular-rails-templates
+//= require_tree ./templates
+//
 //= require_tree .

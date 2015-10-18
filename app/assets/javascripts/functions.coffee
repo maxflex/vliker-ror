@@ -48,7 +48,7 @@
   hideContent()
   $('.footer').addClass('navbar-fixed-bottom animated fadeInUp').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
     $(this).removeClass 'animated fadeInUp'
-    if callback inst undefined
+    if callback isnt undefined
       callback()
 
 

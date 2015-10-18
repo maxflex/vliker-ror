@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 angular
-  .module 'VLiker', ['ngRoute', 'ngAnimate', 'ng-rails-csrf']
+  .module 'VLiker', ['ngRoute', 'ngAnimate', 'ng-rails-csrf', 'templates']
   .filter 'range', ->
     return (input, total) ->
     	total = parseInt total

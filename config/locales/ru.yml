@@ -1,0 +1,7 @@
+ru:
+  layouts:
+    application:
+      main_title: "VLiker"
+  main:
+    index:
+      start: "Start"

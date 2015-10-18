@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  url: MyString
+  url_original: MyString
+  url_short: MyString
+  likes: 1
+  need: 1
+  priority: 1
+  reports: 1
+  queue: 1
+  ip: MyString
+  active: false
+
+two:
+  user_id: 
+  url: MyString
+  url_original: MyString
+  url_short: MyString
+  likes: 1
+  need: 1
+  priority: 1
+  reports: 1
+  queue: 1
+  ip: MyString
+  active: false

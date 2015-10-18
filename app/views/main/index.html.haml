@@ -1,0 +1,62 @@
+-# %pre
+-#   = session[:user].to_yaml
+.main-div{ng: {controller: 'MainCtrl'}}
+  #animation-block
+    #row-ads.row{style: 'height: 200px'}
+      .col-sm-12
+    #row-logo.row
+      .col-sm-2
+      .col-sm-8{style: 'text-align: center'}
+        = retina_image_tag 'logo/logo.png', {id: 'main-logo'}
+    #row-controls.row
+      .col-sm-2
+      .col-sm-8{id: 'main-controls-div'}
+        .input-group
+          %input#main-input.form-control{ng: {model: 'url'}, type: 'text'}
+            %span.input-group-btn
+              %button#start-button.btn.btn-primary{ng: {click: 'start()'}}
+                = t('.start')
+    #row-example.row
+      .col-sm-2
+      .col-sm-8.example-text
+        %span.text-primary{ng: {hide: 'url_error || example_clicked'}}
+          = cookies[:last_task] ? t('.last_task_link') : t('.example_link')
+          %span#example-link{ng: {click: 'goExample($event)'}}
+            = cookies[:last_task] ? cookies[:last_task] : Task::EXAMPLE_URLS.sample
+        %span.text-danger.animate-show{ng: {show: 'url_error'}}
+          {{url_error}}
+    #row-menu.row.row-menu
+      .col-sm-2
+      .col-sm-2
+        %h2
+  .row.row-menu#row-menu
+    .col-sm-2
+    .col-sm-2
+      = retina_image_tag 'icons/Message-Edit.png', {'ng-mouseenter' => '$root.menu_hover[1] = true',
+          'ng-mouseleave' => '$root.menu_hover[1] = false', 'ng-class' => '{"hovered": $root.menu_hover[1], "no-opacity": menu == 1}',
+          'ng-click' => 'setMenu(1)'}
+      .animate-show-down.menu-label#menu-label-1{ng: {show: '$root.menu_hover[1]'}}
+        = t('.menu.wall')
+    .col-sm-2
+      = retina_image_tag 'icons/Heart.png', {'ng-mouseenter' => '$root.menu_hover[2] = true',
+          'ng-mouseleave' => '$root.menu_hover[2] = false', 'ng-class' => '{"hovered": $root.menu_hover[2], "no-opacity": menu == 2}',
+          'ng-click' => 'setMenu(2)'}
+      .animate-show-down.menu-label#menu-label-2{ng: {show: '$root.menu_hover[2]'}}
+        = t('.menu.stats')
+    .col-sm-2
+      = retina_image_tag 'icons/Shopping-Cart.png', {'ng-mouseenter' => '$root.menu_hover[3] = true',
+          'ng-mouseleave' => '$root.menu_hover[3] = false', 'ng-class' => '{"hovered": $root.menu_hover[3], "no-opacity": menu == 3}',
+          'ng-click' => 'setMenu(3)'}
+      .animate-show-down.menu-label#menu-label-3{ng: {show: '$root.menu_hover[3]'}}
+        = t('.menu.store')
+    .col-sm-2
+      = retina_image_tag 'icons/Library-Books.png', {'ng-mouseenter' => '$root.menu_hover[4] = true',
+          'ng-mouseleave' => '$root.menu_hover[4] = false', 'ng-class' => '{"hovered": $root.menu_hover[4], "no-opacity": menu == 4}',
+          'ng-click' => 'setMenu(4)'}
+      .animate-show-down.menu-label#menu-label-4{ng: {show: '$root.menu_hover[4]'}}
+        = t('.menu.instr')
+
+  .row.animated#row-content
+    .col-sm-2
+    .col-sm-8#content
+      %div{ng: {view: true}}

@@ -1,0 +1,43 @@
+%h4#hint-header
+  %span{ng: {show: '!current_task.id && !div_blocked'}}Жмите «мне нравится» на страницах ниже
+  %span.text-success{ng: {show: 'current_task.id && !div_blocked'}}Проект успешно загружен! Продолжайте накрутку.
+  %span.text-danger{ng: {show: 'div_blocked'}}
+    %span.glyphicon.glyphicon-remove
+    Поставьте лайк в открывшейся вкладке, чтобы продолжить накрутку
+%hr{style: 'margin-bottom: 30px'}
+#like-blocks
+  #div-blocker{ng: {show: 'div_blocked'}}
+  .block-line
+    .vliker-block{ng: {repeat: 'i in [] | range:6',
+      class: '{"pull-left": $index == 0 || $index == 3, "pull-right": $index == 2 || $index == 5}'}}
+      %span{ng: {show: 'tasks[i]'}}
+        %img.thumbnail{src: "#{Rails.configuration.thumbnail_service}{{tasks[i].url}}",
+          ng: {click: 'taskClick(i)'}}
+      %span{ng: {show: '!tasks[i]'}}
+        .card
+          %figure.front
+          %figure.back
+            Новых задач нет
+        .null-task
+
+#row-process-control.row
+  .col-sm-12{:style => "text-align: center"}
+    .btn-group.btn-group-justified
+      .btn-group{:role => "group"}
+        %a.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :role => "button"}
+          %span.glyphicon.glyphicon-flag>
+          Пожаловаться
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          %li
+            %a{ng: {click: 'reportTask()'}} Страница была недоступна
+          %li
+            %a{ng: {click: 'reportTask()'}} Страница уже отображалась
+          %li
+            %a{ng: {click: 'reportTask()'}} Спам
+      %a.btn.btn-primary.likes-count{:style => "cursor: default"}
+        %span.glyphicon.glyphicon-heart
+        %b#likes-count {{current_task.need}}
+      %a.btn.btn-primary{ng: {click: 'stopConfirm()'}}
+        %span.glyphicon.glyphicon-stop>
+        Завершить

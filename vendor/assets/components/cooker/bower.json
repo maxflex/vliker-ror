@@ -1,0 +1,37 @@
+{
+  "name": "cooker",
+  "version": "0.4.7",
+  "main": [
+    "dist/css/cooker.css",
+    "dist/css/cooker.min.css",
+    "dist/js/cooker.js",
+    "dist/js/cooker.min.js",
+    "less/**"
+  ],
+  "ignore": [
+    ".*",
+    "*.md",
+    "_config.yml",
+    "src",
+    "*.json",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "drawer": "~1.5.1"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": [
+        "dist/js/*.js",
+        "js/*.js"
+      ],
+      "less": "less/**"
+    },
+    "drawer": {
+      "js": "dist/js/*.js",
+      "css": "dist/css/*.css"
+    }
+  }
+}
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_seen_task: 1
+  ip: MyString
+  vip: false
+  banned: false
+
+two:
+  last_seen_task: 1
+  ip: MyString
+  vip: false
+  banned: false

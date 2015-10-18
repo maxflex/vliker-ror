@@ -1,0 +1,30 @@
+{
+  "name": "vliker",
+  "version": "0.0.0",
+  "authors": [
+    "Maksim Kolyadin <maksim@kolyadin.com>"
+  ],
+  "description": "Adding likes on VK.COM",
+  "main": "bower.json",
+  "license": "MIT",
+  "homepage": "http://kolyadin.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "~3.4.0",
+    "bootbox.js": "bootbox#~4.4.0",
+    "compass-mixins": "~1.0.2",
+    "hint.css": "~1.3.5",
+    "nprogress": "~0.2.0",
+    "remarkable-bootstrap-notify": "~3.1.3",
+    "retina.js": "~1.3.0",
+    "rippler": "~0.1.1",
+    "underscore": "~1.8.3"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "rippler",
+  "description": "Effect that spreads like a wave in touch or click.",
+  "version": "0.1.1",
+  "keywords": [
+    "css3",
+    "js",
+    "less",
+    "animation",
+    "jquery",
+    "pligin"
+  ],
+  "homepage": "http://git.blivesta.com/rippler",
+  "main": [
+    "dist/less/**",
+    "dist/css/rippler.css",
+    "dist/css/rippler.min.css",
+    "dist/js/rippler.js",
+    "dist/js/rippler.min.js",
+    "dist/svg/*.svg"
+  ],
+  "ignore": [
+    ".*",
+    "src",
+    "*.yml",
+    "*.html",
+    "*.json",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "cooker": "~0.4.7"
+  },
+  "exportsOverride": {
+    "cooker": {
+      "js": "dist/js/dropdown.js",
+      "css": "dist/css/",
+      "less": "dist/less/"
+    }
+  },
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "14909dd6ac1ebe4f0dce4fe8b9cfd7f8b3db2d50"
+  },
+  "_source": "git://github.com/blivesta/rippler.git",
+  "_target": "~0.1.1",
+  "_originalSource": "rippler",
+  "_direct": true
+}

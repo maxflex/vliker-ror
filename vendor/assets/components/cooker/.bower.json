@@ -1,0 +1,46 @@
+{
+  "name": "cooker",
+  "version": "0.4.8",
+  "main": [
+    "dist/css/cooker.css",
+    "dist/css/cooker.min.css",
+    "dist/js/cooker.js",
+    "dist/js/cooker.min.js",
+    "less/**"
+  ],
+  "ignore": [
+    ".*",
+    "*.md",
+    "_config.yml",
+    "src",
+    "*.json",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "drawer": "~1.5.1"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": [
+        "dist/js/*.js",
+        "js/*.js"
+      ],
+      "less": "less/**"
+    },
+    "drawer": {
+      "js": "dist/js/*.js",
+      "css": "dist/css/*.css"
+    }
+  },
+  "homepage": "https://github.com/teq-inc/cooker",
+  "_release": "0.4.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.4.8",
+    "commit": "ba74e0b999e90cbd671cdd62f0fdf2d4ed55e387"
+  },
+  "_source": "git://github.com/teq-inc/cooker.git",
+  "_target": "~0.4.7",
+  "_originalSource": "cooker"
+}

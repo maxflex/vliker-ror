@@ -1,0 +1,22 @@
+%center
+  %a.dashed-hover{:href => "http://vk.com/write#{Rails.configuration.support_id}", :style => "margin-bottom: 12px", :target => "_blank"}
+    %h4{:style => "margin-bottom: 3px"}
+      %span.glyphicon.glyphicon-envelope{:style => "top: 3px; margin-right: 5px"}>
+      Написать в поддержку клиентов
+  %iframe.comments-iframe{:frameborder => "no", :scrolling => "no", :src => "http://graffitistudio.ru/vliker_comments.php"}
+:javascript
+  // Айфрейм комментариев
+  comments_iframe = $(".comments-iframe");
+
+  // Как только айфрейм загрузился
+  comments_iframe.on("load", function() {
+
+  	$(window).on("scroll", function() {
+  		var scrolled =  ($(window).scrollTop() + $(window).height()) / $(document).height();
+
+  		if (scrolled > 0.8) {
+  			comments_iframe.height(comments_iframe.height() + 300);
+  		//	comments_iframe[0].contentWindow.WComments.showMore();
+  		}
+  	});
+  });

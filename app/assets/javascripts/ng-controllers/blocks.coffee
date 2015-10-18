@@ -74,11 +74,11 @@ angular
 
       # should be at least 3 likes
       if likes_count < 3
-        bootbox.alert getIcon('caution') + 'Поставьте хотя бы 3 лайка, чтобы завершить накрутку'
+        bootbox.alert getIconCaution() + 'Поставьте хотя бы 3 лайка, чтобы завершить накрутку'
         return
 
       bootbox.confirm
-        message: getIcon('heart') + 'Вам будет накручено <span class=\'text-success\'><b>+' + likes_count + '</b>' + glyphIcon('heart glyphicon-middle') + '</span><div class=\'hint-text\'>' + 'Убедитесь, что ваша странца открыта для всех, чтобы пользователи смогли поставить Вам лайк' + '</div>'
+        message: getIconHeart() + 'Вам будет накручено <span class=\'text-success\'><b>+' + likes_count + '</b>' + glyphIcon('heart glyphicon-middle') + '</span><div class=\'hint-text\'>' + 'Убедитесь, что ваша странца открыта для всех, чтобы пользователи смогли поставить Вам лайк' + '</div>'
         buttons:
           confirm: label: 'Завершить'
           cancel:

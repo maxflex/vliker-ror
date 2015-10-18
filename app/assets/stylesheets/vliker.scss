@@ -7,32 +7,32 @@ $green_main: #3fb618;
 
 @font-face {
   font-family: "RaleWayThin";
-  src: url('Raleway-Thin.ttf') format("truetype");
+  src: font-url('Raleway-Thin.ttf') format("truetype");
 }
 
 @font-face {
   font-family: "RaleWayExtraLight";
-  src: url('Raleway-ExtraLight.ttf') format("truetype");
+  src: font-url('Raleway-ExtraLight.ttf') format("truetype");
 }
 
 @font-face {
   font-family: "RaleWayLight";
-  src: url('Raleway-Light.ttf') format("truetype");
+  src: font-url('Raleway-Light.ttf') format("truetype");
 }
 
 @font-face {
   font-family: "RaleWayRegular";
-  src: url('Raleway-Regular.ttf') format("truetype");
+  src: font-url('Raleway-Regular.ttf') format("truetype");
 }
 
 @font-face {
   font-family: "RalewayMedium";
-  src: url('Raleway-Medium.ttf') format("truetype");
+  src: font-url('Raleway-Medium.ttf') format("truetype");
 }
 
 @font-face {
   font-family: "RalewayBold";
-  src: url('Raleway-Bold.ttf') format("truetype");
+  src: font-url('Raleway-Bold.ttf') format("truetype");
 }
 
 /* also keyframes and -moz-keyframes */
@@ -249,7 +249,7 @@ hr {
         -o-transition: all .1s ease; /* Opera */
         transition: all .1s ease;
         &.go-back:hover {
-			content: url('icons/ArrowUp@2x.png');
+			content: font-url('icons/ArrowUp@2x.png');
         }
 		&.hovered {
 			opacity: 1;
@@ -344,7 +344,7 @@ h4 {
 		overflow: hidden;
 //		margin: 0 13px;
 		background-color: white;
-		background: url('loaders/progress_blue.gif') no-repeat 50% 50%;
+		background: font-url('loaders/progress_blue.gif') no-repeat 50% 50%;
 		z-index: 1;
 		width: 280px;
 		height: 200px;
@@ -405,7 +405,7 @@ h4 {
 				backface-visibility: hidden;
 
 				&.front {
-					background: url('icons/close@2x.png') no-repeat 50% 50%;
+					background: font-url('icons/close@2x.png') no-repeat 50% 50%;
 					width: 100%;
 					height: 100%;
 					background-color: #527599;

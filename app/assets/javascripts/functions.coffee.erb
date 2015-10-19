@@ -11,10 +11,10 @@
 ###
 
 @getIconHeart =  ->
-  "<img src='<%= asset_path('circles/fullcolor/heart.png') %>' class='circle-icon'>"
+  "<img src=<%= asset_path('circles/fullcolor/heart.png') %> class='circle-icon'>"
 
 @getIconCaution =  ->
-  "<img src='<%= asset_path('circles/fullcolor/caution.png') %>' class='circle-icon'>"
+  "<img src=<%= asset_path('circles/fullcolor/caution.png') %> class='circle-icon'>"
 
 ###*
 # Вставить glyphicon.
@@ -30,7 +30,6 @@
 ###
 
 @topAnimation = () ->
-  console.log 'top_animation'
   $('#animation-block, #likes-iframe').slideUp animation_speed
   showContent()
   $('body').css 'overflow-y': 'visible'
@@ -164,5 +163,4 @@
  * Capture application scope
 ###
 $(document).on 'ready page:load', ->
-  console.log 1111
-  @ang_scope = angular.element('[ng-app=VLiker]').scope()
+  @ang_scope = angular.element('[ng-controller]').scope()

@@ -16,4 +16,3 @@
 !/log/.keep
 /tmp
 /public/assets/*
-!/public/assets/circles/*

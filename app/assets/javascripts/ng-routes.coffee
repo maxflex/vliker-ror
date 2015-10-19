@@ -12,8 +12,7 @@ angular.module 'VLiker'
       controller : 'StatsCtrl'
       menu       : 2
     .when '/store',
-      templateUrl: 'store.html'
-      controller : 'MainCtrl'
+      templateUrl: 'construction.html'
       menu       : 3
     .when '/instr',
       templateUrl: 'construction.html'

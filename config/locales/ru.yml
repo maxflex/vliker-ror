@@ -4,4 +4,11 @@ ru:
       main_title: "VLiker"
   main:
     index:
-      start: "Start"
+      menu:
+        wall : "Стена"
+        stats: "Статистика"
+        store: "Магазин"
+        instr: "Как пользоваться"
+      start: "Накрутить"
+      example_link: "Например, "
+      last_task_link: "Вы недавно накручивали на "

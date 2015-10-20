@@ -2,6 +2,6 @@ set :output, "#{path}/log/cron.log"
 
 # update tasks queue
 every 1.minutes do
-  command "echo 'Malec3'"
+  command "echo 'Malec4'"
   runner "Task.cron_update_queue"
 end

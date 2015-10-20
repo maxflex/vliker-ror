@@ -102,7 +102,7 @@ class Task < ActiveRecord::Base
   # Update task queue
   #
   def update_queue
-    queue = Task.where('active="t" AND likes=0 AND id < ?', id).count
+    queue = Task.where('active=? AND likes=0 AND id < ?', true, id).count
     self.update_attribute(:queue, queue)
   end
 

@@ -1,4 +1,4 @@
-.row.stats-row{ng: {repeat: 'task in tasks'}}
+.row.stats-row{ng: {repeat: 'task in tasks track by $index'}}
   .col-sm-4
     .vliker-block.fit-width
       %a{href: '{{task.url}}', target: '_blank'}
@@ -41,9 +41,12 @@
         %span{ng: {show: 'task.likes > 0'}} {{task.likes / task.need * 100 | number:0}}%
 
 
+-# TASKS LOADING
+%center{ng: {show: 'tasks === undefined'}, style: 'margin: 100px 0'}
+  = inline_svg('three-dots')
 
 -# NO TASKS
-.well.well-lg{ng: {show: '!tasks'},style: 'text-align: center'}
+.well.well-lg{ng: {show: 'tasks === null'},style: 'text-align: center'}
   %span.glyphicon.glyphicon-align-left{style: 'top: 1px; margin-right: 6px'}>
   Нет статистики для отображения
   .hint-text

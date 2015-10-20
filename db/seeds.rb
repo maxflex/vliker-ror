@@ -5,79 +5,79 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-User.delete_all
-User.create(ip: '192.168.0.1')
-
 Task.delete_all
+User.delete_all
+
+User.create(id: 1, ip: '213.184.130.66')
+
 Task.create([
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_1',
-    need: 50,
+    url: 'https://vk.com/id283230003?z=photo283230003_382855474%2Fphotos283230003',
+    need: 10,
     ip: '192.168.0.1',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_2',
-    need: 30,
+    url: 'http://vk.com/dobberman96?w=wall168628612_1410%2Fall',
+    need: 10,
     ip: '192.168.0.2',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_3',
-    need: 25,
+    url: 'http://vk.com/id303413484?z=photo303413484_380748921%2Fphotos303413484',
+    need: 10,
     ip: '192.168.0.3',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_4',
-    need: 24,
+    url: 'https://vk.com/danilova_vd?z=photo311551377_387199818%2Falbum311551377_0%2Frev',
+    need: 10,
     ip: '192.168.0.4',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_5',
-    need: 102,
+    url: 'http://vk.com/photo240622449_377784141',
+    need: 10,
     ip: '192.168.0.5',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_6',
-    need: 26,
+    url: 'http://vk.com/klepicov15?z=photo184066602_383751152%2Fphotos184066602',
+    need: 10,
     ip: '192.168.0.6',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_7',
-    need: 102,
+    url: 'https://vk.com/id240622449?z=photo240622449_335534859%2Falbum240622449_0%2Frev',
+    need: 10,
     ip: '192.168.0.5',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_8',
-    need: 26,
+    url: 'http://vk.com/bmmary?z=photo3528500_385952167%2Falbum3528500_0%2Frev',
+    need: 10,
     ip: '192.168.0.6',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_9',
-    need: 102,
+    url: 'http://vk.com/wall34377350_4609',
+    need: 10,
     ip: '192.168.0.5',
     active: true
   },
   {
     user_id: 1,
-    url: 'https://vk.com/wall1_10',
-    need: 26,
+    url: 'http://vk.com/id314915717?z=photo314915717_382876399%2Falbum314915717_0%2Frev',
+    need: 10,
     ip: '192.168.0.6',
     active: true
   },

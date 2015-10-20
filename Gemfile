@@ -57,7 +57,7 @@ gem 'colorize'
 gem 'sprockets', '2.12.3'
 
 group :production do
-  gem 'rails_12factor'
+  # gem 'rails_12factor'
   gem 'unicorn'
   gem 'pg'
 end

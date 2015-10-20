@@ -49,7 +49,7 @@ angular
       $http.post 'get_new',
         task_id: task.id
       .then (response) ->
-        $scope.tasks[task_index] = response.data[0]
+        $scope.tasks[task_index] = response.data
 
     ###*
      * Report task
@@ -102,4 +102,4 @@ angular
         stopAnimation ->
           $timeout ->
             $scope.setMenu(2)
-          , 300
+          , 700

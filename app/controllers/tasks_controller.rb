@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
   include UserAuth
 
-  # GET
+  #
+  # Start VLiker and get 6 tasks
+  #
   def blocks
     # trying to find task by url
     url = Task.shorten_url(params[:url])
@@ -36,16 +38,28 @@ class TasksController < ApplicationController
     end
   end
 
+  #
+  # Get one new task
+  #
   def get_new
-    session[:user]['last_seen_task'] = params[:task_id] if session[:user]['last_seen_task'] < params[:task_id]
     logger.debug params.to_yaml.colorize :blue
     logger.debug session[:user].to_yaml.colorize :red
-    @new_task = Task.get_new_tasks(session[:user])
+
+    @new_task = Task.get_new_tasks(session[:user]).first()
+
+    # update last seen task
+    if !@new_task.nil?
+      session[:user]['last_seen_task'] = @new_task.id if session[:user]['last_seen_task'] < @new_task.id
+    end
+    
     respond_to do |format|
       format.json {render :json => @new_task}
     end
   end
 
+  #
+  # Stop and add likes
+  #
   def stop
     # validate likes
     valid_task_ids = Task.verify_likes params[:task_data]

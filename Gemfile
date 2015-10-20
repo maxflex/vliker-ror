@@ -56,6 +56,8 @@ gem 'colorize'
 
 gem 'sprockets', '2.12.3'
 
+gem 'whenever', :require => false
+
 group :production do
   # gem 'rails_12factor'
   gem 'unicorn'

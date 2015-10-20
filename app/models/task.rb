@@ -6,6 +6,18 @@ class Task < ActiveRecord::Base
 
   EXAMPLE_URLS = ['http://vk.com/photo1_1', 'http://vk.com/photo2_2']
 
+  #
+  # CRON: Update queue
+  #
+  def self.cron_update_queue
+      @tasks = Task.where("active = ? AND likes = ?", true, 0)
+
+      @tasks.each do |task|
+        task.update_queue
+      end
+  end
+
+
   # Get new tasks
   def self.get_new_tasks(user, count = 1)
     new_tasks = Task.where("id > ? AND user_id!= ? AND active = ?", user['last_seen_task'], (user['id'].nil? ? 0 : user['id']), true)

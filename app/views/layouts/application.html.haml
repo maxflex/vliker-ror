@@ -1,16 +1,17 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title
-      = t('.main_title')
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:name => "keywords",    :content => t(".keywords")}
+    %meta{:name => "description", :content => t(".description")}
+    %title= t('.title')
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{ng: {app: 'VLiker'}}
     .content
       = yield
-      
+
     .footer.navbar-fixed-bottom
       #likes-iframe
         %iframe{:frameborder => "no", :height => "33", :scrolling => "no", :src => "http://graffitistudio.ru/vliker.php"}

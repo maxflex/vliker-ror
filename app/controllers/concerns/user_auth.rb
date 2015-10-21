@@ -11,7 +11,7 @@ module UserAuth extend ActiveSupport::Concern
     # reset_session
     if !session[:user].present?
       if !from_cookie
-        session[:user] = User.new.attributes
+        session[:user] = User.new(ip: request.remote_ip).attributes
       end
     end
   end

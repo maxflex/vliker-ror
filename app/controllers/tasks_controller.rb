@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 
     # create new task if not found by url
     unless @task.present?
-      @task = Task.new(url: params[:url])
+      @task = Task.new(url: params[:url], ip: request.remote_ip)
     end
     respond_to do |format|
       if @task.valid?
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     if !@new_task.nil?
       session[:user]['last_seen_task'] = @new_task.id if session[:user]['last_seen_task'] < @new_task.id
     end
-    
+
     respond_to do |format|
       format.json {render :json => @new_task}
     end

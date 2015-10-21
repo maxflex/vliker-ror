@@ -28,6 +28,10 @@ class Task < ActiveRecord::Base
   # Shorten url
   def self.shorten_url(url)
     matches       = url.match %r{((photo|video|wall)[-]?[0-9]+[_][0-9]+)([\?]reply =[0-9]+)?}
+
+    # return original url if no matches
+    return url if matches.nil?
+
     shortened_url = matches[1] + (!matches[3].nil? ? matches[3] : '')
     return shortened_url
   end
@@ -131,20 +135,20 @@ class Task < ActiveRecord::Base
     # Validate url
     def url_correct
       if url.blank?
-        return errors.add :url, I18n.t('errors.blank_url')
+        return errors.add :base, I18n.t('errors.blank_url')
       end
 
       if EXAMPLE_URLS.include?(url)
-        # return errors.add :url, I18n.t('errors.this_is_example')
+        return errors.add :base, I18n.t('errors.this_is_example')
       end
 
       if url.match('https?://(m.)?vk.com/').nil?
-        return errors.add :url, I18n.t('errors.should_start_with_vk_com')
+        return errors.add :base, I18n.t('errors.should_start_with_vk_com')
       end
 
       if url.index('photo').nil? && url.index('video').nil? &&
         url.index('wall').nil? && url.index('_').nil?
-        return errors.add :url, I18n.t('errors.specify_address')
+        return errors.add :base, I18n.t('errors.specify_address')
       end
     end
 

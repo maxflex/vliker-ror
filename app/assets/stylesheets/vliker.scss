@@ -5,6 +5,8 @@ $almost_invisible: rgba(170, 186, 204, 0.3);
 
 $green_main: #3fb618;
 
+$footer_gray: #BAC2CC;
+
 @font-face {
   font-family: "RaleWayThin";
   src: font-url('Raleway-Thin.ttf') format("truetype");
@@ -60,8 +62,31 @@ $green_main: #3fb618;
     }
 }
 
+/* NORMALIZE BOOTSTRAP */
+.btn {
+  outline: none !important;
+}
+
+.btn-primary {
+  &:focus, &:active {
+      background-color: $blue_main !important;
+      border-color: $blue_main !important;
+  }
+}
+/* NORMALIZE BOOTSTRAP */
+
 .svg-icon {
   fill: #527599;
+}
+
+.svg-hearts-xl {
+  fill: $footer_gray;
+  transform:scale(2.0);
+  -webkit-transform:scale(2.0);
+}
+
+.margin-100 {
+  margin: 100px 0;
 }
 
 .appleShake {
@@ -116,11 +141,19 @@ body {
   margin-top: 7px;
 }
 
+.btn-round {
+  border-radius: 5px !important;
+}
+
 .hint-text {
-  opacity: .2;
-  font-size: 12px;
-  margin-top: 10px;
+  opacity: .3;
   color: black;
+  // color: $footer_gray;
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: 'RaleWayLight';
+  display: inline-block;
+  width: 570px;
 }
 
 .banned-div {
@@ -595,6 +628,14 @@ h4 {
 
 .center {
 	text-align: center
+}
+
+.h-menu {
+  & h1 {
+    font-family: RalewayLight;
+    margin: 50px 0 0;
+    font-size: 30px
+  }
 }
 
 .opacity-hover {

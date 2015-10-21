@@ -26,7 +26,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = Uglifier.new(mangle: false)
-  
+
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -78,7 +78,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.support_id        = '230824942'
+  config.support_id        = '316834465'
   config.thumbnail_service = 'http://mini.s-shot.ru/?'
 
   # Minimum task likes to be added to DB

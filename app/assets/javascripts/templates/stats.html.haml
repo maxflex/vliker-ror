@@ -42,14 +42,15 @@
 
 
 -# TASKS LOADING
-%center{ng: {show: 'tasks === undefined'}, style: 'margin: 100px 0'}
+%center.margin-100{ng: {show: 'tasks === undefined'}}
   = inline_svg('three-dots')
 
 -# NO TASKS
-.well.well-lg{ng: {show: 'tasks === null'},style: 'text-align: center'}
-  %span.glyphicon.glyphicon-align-left{style: 'top: 1px; margin-right: 6px'}>
-  Нет статистики для отображения
-  .hint-text
-    Здесь будет отображаться статистика по накрученным лайкам, времени их поступления на страницу, места в очереди и другое.
-    %br
-    Приступите к накрутке, чтобы посмотреть статистику.
+.center.margin-100{ng: {show: 'tasks === null'}}
+  = inline_svg('hearts')
+  .h-menu
+    %h1 Статистика пуста
+    .hint-text
+      Здесь будет отображаться статистика по накрученным лайкам, времени их поступления на страницу, места в очереди и другое
+  %button.btn.btn-primary.btn-lg.btn-round{style: 'margin-top: 20px', ng: {click: 'setMenu(2)'}}
+    Пристуить к накрутке

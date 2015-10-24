@@ -9,10 +9,8 @@
       -# ACTIVE
       %span{ng: {show: 'task.active'}}
         %span{ng: {show: 'task.queue > 0 && !task.likes'}}
-          {{task.queue == 0 ? 'следующий' : task.queue}}<sup>й</sup> в очереди
-        %span{ng: {show: 'task.likes > 0'}}
-          В процессе
-        %span{ng: {show: 'task.likes > 0'}}
+          {{task.queue == 1 ? 'следующий' : (task.queue + '<sup>й</sup>')}} в очереди
+        %span{ng: {show: '!task.queue'}}
           В процессе
 
       -# NOT ACTIVE

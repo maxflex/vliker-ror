@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
   after_initialize :task_init_url, :if => :new_record?
   after_create     :update_queue
 
-  EXAMPLE_URLS = ['http://vk.com/photo1_1', 'http://vk.com/photo2_2']
+  EXAMPLE_URLS = ['http://vk.com/photo236886_332', 'http://vk.com/wall123123552']
 
   #
   # CRON: Update queue

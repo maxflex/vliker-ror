@@ -46,7 +46,7 @@
   = inline_svg('three-dots')
 
 -# NO TASKS
-.center.margin-100{ng: {show: 'tasks === null'}}
+.center.margin-100{ng: {show: 'tasks === null || tasks.length == 0'}}
   = inline_svg('hearts')
   .h-menu
     %h1 Статистика пуста

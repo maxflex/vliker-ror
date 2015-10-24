@@ -22,6 +22,7 @@ class Task < ActiveRecord::Base
   def self.get_new_tasks(user, count = 1)
     new_tasks = Task.where("id > ? AND user_id!= ? AND active = ?", user['last_seen_task'], (user['id'].nil? ? 0 : user['id']), true)
                     .limit(count)
+                    .order(:id)
     return new_tasks
   end
 #

@@ -18,10 +18,10 @@ module UserAuth extend ActiveSupport::Concern
 
   # user from cookie
   def from_cookie
-    return false unless cookies[:vtoken].present?
+    return false unless cookies[:utoken].present?
     # user id stored in cookies as a md5-hash
     # ending with the actual user id
-    user_id = cookies[:vtoken].from(32)
+    user_id = cookies[:utoken].from(32)
     user = User.find(user_id)
     if user
       session[:user] = user.attributes
@@ -34,7 +34,7 @@ module UserAuth extend ActiveSupport::Concern
   # user to cookie
   def to_cookie(user_id)
     token = Digest::MD5.hexdigest(SALT + user_id.to_s + SALT)
-    cookies[:vtoken] = {
+    cookies[:utoken] = {
       value: token + user_id.to_s,
       expires: 1.year.from_now,
     }

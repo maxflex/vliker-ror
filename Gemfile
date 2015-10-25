@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
 # narubях
 # https://github.com/indirect/haml-rails
 # rails generate haml:application_layout convert
@@ -57,6 +56,8 @@ gem 'colorize'
 gem 'sprockets', '2.12.3'
 
 gem 'whenever', :require => false
+
+gem 'rails_admin'
 
 group :production do
   # gem 'rails_12factor'

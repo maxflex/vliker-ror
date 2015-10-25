@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/mer', as: 'rails_admin'
   controller :tasks do
     post 'blocks'   => :blocks
     post 'get_new'  => :get_new

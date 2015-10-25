@@ -20,14 +20,13 @@
  //Import bootstrap-sprockets
  @import "bootstrap-sprockets";
 
- // Import cerulean variables
- @import "bootswatch/cosmo/variables";
-
  // Then bootstrap itself
  @import "bootstrap";
 
+ // Import cerulean variables
+ // @import "bootswatch/cosmo/variables";
  // And finally bootswatch style itself
- @import "bootswatch/cosmo/bootswatch";
+ // @import "bootswatch/cosmo/bootswatch";
 
  @import "bootstrap-vliker";
  @import "vliker";

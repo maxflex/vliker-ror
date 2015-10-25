@@ -30,4 +30,8 @@
 //= require angular-rails-templates
 //= require_tree ./templates
 //
+//= require ladda/dist/spin.min
+//= require ladda/dist/ladda.min
+//= require angular-ladda/dist/angular-ladda.min
+//
 //= require_tree .

@@ -25,16 +25,16 @@ class Task < ActiveRecord::Base
                     .order(:id)
     return new_tasks
   end
-#
+
   # Shorten url
   def self.shorten_url(url)
-    matches       = url.match %r{((photo|video|wall)[-]?[0-9]+[_][0-9]+)([\?]reply =[0-9]+)?}
-
-    # return original url if no matches
-    return url if matches.nil?
-
-    shortened_url = matches[1] + (!matches[3].nil? ? matches[3] : '')
-    return shortened_url
+    begin
+      matches       = url.match %r{((photo|video|wall)[-]?[0-9]+[_][0-9]+)([\?]reply =[0-9]+)?}
+      shortened_url = matches[1] + (!matches[3].nil? ? matches[3] : '')
+      return shortened_url
+    rescue
+      return url
+    end
   end
 
   # Verify likes

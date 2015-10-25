@@ -26,6 +26,10 @@
     "retina.js": "~1.3.0",
     "rippler": "~0.1.1",
     "underscore": "~1.8.3",
-    "SVG-Loaders": "svg-loaders#~1.0.2"
+    "SVG-Loaders": "svg-loaders#~1.0.2",
+    "angular-ladda": "~0.3.1"
+  },
+  "resolutions": {
+    "spin.js": "~2.0.2"
   }
 }

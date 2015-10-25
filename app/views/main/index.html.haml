@@ -14,7 +14,7 @@
         .input-group
           %input#main-input.form-control{ng: {model: 'url'}, type: 'text'}
             %span.input-group-btn
-              %button#start-button.btn.btn-primary{ng: {click: 'start()'}}
+              %button#start-button.btn.btn-primary{ng: {click: 'start()'}, ladda: 'start_loading'}
                 = t('.start')
     #row-example.row
       .col-sm-2

@@ -66,17 +66,19 @@ class Task < ActiveRecord::Base
     return valid_task_ids
   end
 
-  # Count liked tasks
+  #
+  # Add likes to OTHERS
+  #
   def self.like_others(valid_task_ids)
     return false if valid_task_ids.nil?
 
     # get tasks
     tasks = Task.where(id: valid_task_ids)
 
-    # add likes to other tasks
-    tasks.update_all('likes = likes + 1')
+    # add likes to other tasks and disable queue, because the task is already liked
+    tasks.update_all('likes = likes + 1 AND queue=0')
 
-    # inactive finished tasks
+    # de-activate finished tasks
     tasks.where('likes>=need').update_all(:active => false)
   end
 
@@ -94,7 +96,9 @@ class Task < ActiveRecord::Base
     tasks.where('reports >= 3').update_all(:active => false)
   end
 
-  # Add likes to current task
+  #
+  # Add likes to OWN current task
+  #
   def like_own(count)
     return false if count == 0
 

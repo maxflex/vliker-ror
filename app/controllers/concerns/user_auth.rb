@@ -39,4 +39,13 @@ module UserAuth extend ActiveSupport::Concern
       expires: 1.year.from_now,
     }
   end
+
+  #
+  # Admin page is only accessible when cookies[:admin] is set
+  #
+  def admin_check
+    if params[:controller] == "rails_admin/main" && !cookies[:admin].present?
+      redirect_to main_app.root_path
+    end
+  end
 end

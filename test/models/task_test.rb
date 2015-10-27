@@ -7,24 +7,24 @@ class TaskTest < ActiveSupport::TestCase
 
     # blank url
     assert task.invalid?
-    assert_equal [I18n.t('errors.blank_url')], task.errors[:url]
+    assert_equal [I18n.t('errors.blank_url')], task.errors[:base]
 
     # example url sent
     task.url = Task::EXAMPLE_URLS.at(0)
     assert task.invalid?
-    assert_equal [I18n.t('errors.this_is_example')], task.errors[:url]
+    assert_equal [I18n.t('errors.this_is_example')], task.errors[:base]
 
     # url should start with http://vk.com/
     task.url = 'http://google.com'
     assert task.invalid?
-    assert_equal [I18n.t('errors.should_start_with_vk_com')], task.errors[:url]
+    assert_equal [I18n.t('errors.should_start_with_vk_com')], task.errors[:base]
 
     task.url = 'http://vk.com/'
     task.invalid?
-    assert_not_equal [I18n.t('errors.should_start_with_vk_com')], task.errors[:url]
+    assert_not_equal [I18n.t('errors.should_start_with_vk_com')], task.errors[:base]
 
     # url should have the target params after vk.com
-    assert_equal [I18n.t('errors.specify_address')], task.errors[:url]
+    assert_equal [I18n.t('errors.specify_address')], task.errors[:base]
     task.url = 'https://vk.com/wall155662180_4692'
 
     assert task.valid?, task.errors.full_messages

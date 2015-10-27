@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913012705) do
+ActiveRecord::Schema.define(version: 20151026002943) do
+
+  create_table "good_types", force: :cascade do |t|
+    t.string   "title"
+    t.decimal  "price"
+    t.string   "icon"
+    t.integer  "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goods", force: :cascade do |t|
+    t.integer  "price"
+    t.string   "bonus"
+    t.integer  "page"
+    t.integer  "count"
+    t.integer  "good_type_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "goods", ["good_type_id"], name: "index_goods_on_good_type_id"
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"

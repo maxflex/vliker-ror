@@ -29,11 +29,9 @@ class TaskTest < ActiveSupport::TestCase
 
     assert task.valid?, task.errors.full_messages
   end
-
-
+  
   test "url shortened correctly" do
     task = Task.new(url: 'https://vk.com/vlikerhelp?z=photo316834465_374446185%2Falbum316834465_0%2Frev')
-
     assert_equal task.url, 'http://vk.com/photo316834465_374446185'
     assert_equal task.url_original, 'https://vk.com/vlikerhelp?z=photo316834465_374446185%2Falbum316834465_0%2Frev'
     assert_equal task.url_short, 'photo316834465_374446185'

@@ -32,6 +32,7 @@ class TasksController < ApplicationController
         end
 
         format.json {render :json => {tasks: @six_tasks, current_task: @task} }
+        format.html {render :json => {tasks: @six_tasks, current_task: @task} }
       else
         format.json {render :json => @task.errors.full_messages, status: :unprocessable_entity}
       end

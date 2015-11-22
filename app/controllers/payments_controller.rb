@@ -29,7 +29,7 @@ class PaymentsController < ActionController::Base
     # puts hash.colorize :yellow
     # puts Digest::SHA1.hexdigest(hash).colorize :red
     # puts params[:sha1_hash].colorize :green
-    # return if Digest::SHA1.hexdigest(hash) != params[:sha1_hash]
+    return if Digest::SHA1.hexdigest(hash) != params[:sha1_hash]
 
     order = Order.new(good_id: order_data[0], link: order_data[1])
 

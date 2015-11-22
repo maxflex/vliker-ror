@@ -35,10 +35,10 @@
         %hr
         .payment-methods-list
           %div{ng: {repeat: 'payment_type in payment_types', click: 'proceedPayment(payment_type)'}}
-            %img{src: 'assets/ps/{{payment_type.logo}}_logo.png'}
+            %img{src: 'img/ps/{{payment_type.logo}}_logo.png'}
             %span {{payment_type.name}}
           %div
-            %img{src: 'assets/ps/gift_red.png'}
+            %img{src: 'img/ps/gift_red.png'}
             %span Подарочный код
 
 -# Ввод ссылки для покупки

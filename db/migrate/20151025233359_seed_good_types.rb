@@ -43,9 +43,9 @@ class SeedGoodTypes < ActiveRecord::Migration
   def down
     GoodType.delete_all
     # Production PG version
-    # ActiveRecord::Base.connection.reset_pk_sequence!(GoodType.table_name)
+    ActiveRecord::Base.connection.reset_pk_sequence!(GoodType.table_name)
 
     # Development SQLite version
-    ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='#{GoodType.table_name}'")
+    # ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='#{GoodType.table_name}'")
   end
 end

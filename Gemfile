@@ -59,17 +59,18 @@ gem 'whenever', :require => false
 
 gem 'rails_admin'
 
+gem 'pg'
+
 group :production do
   # gem 'rails_12factor'
   gem 'unicorn'
-  gem 'pg'
 end
 
 group :development, :test do
   gem 'hirb-unicode'
 
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -80,10 +81,14 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'capybara-webkit'
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end

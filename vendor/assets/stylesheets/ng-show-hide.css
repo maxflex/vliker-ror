@@ -8,26 +8,6 @@ h2 {
   font-family: 'RaleWayLight', sans-serif;
 }
 
-/* line 30, ../sass/screen.scss */
-.animate-repeat.ng-move, .animate-repeat.ng-enter {
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  -webkit-transition: all 1s linear;
-  transition: all 1s linear;
-  -moz-animation-duration: 1s;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -moz-animation-fill-mode: both;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-/* line 37, ../sass/screen.scss */
-.animate-repeat.ng-move-active, .animate-repeat.ng-enter-active {
-  -moz-animation-name: fadeInDown;
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-}
-
 /* line 47, ../sass/screen.scss */
 .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
   -moz-animation-duration: 0.5s;

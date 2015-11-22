@@ -27,7 +27,9 @@
     "rippler": "~0.1.1",
     "underscore": "~1.8.3",
     "SVG-Loaders": "svg-loaders#~1.0.2",
-    "angular-ladda": "~0.3.1"
+    "angular-ladda": "~0.3.1",
+    "bxslider-4": "~4.2.5",
+    "js-base64": "~2.1.9"
   },
   "resolutions": {
     "spin.js": "~2.0.2"

@@ -124,9 +124,9 @@ class SeedGoods < ActiveRecord::Migration
   def down
     Good.delete_all
     # Production PG version
-    # ActiveRecord::Base.connection.reset_pk_sequence!(Good.table_name)
+    ActiveRecord::Base.connection.reset_pk_sequence!(Good.table_name)
 
     # Development SQLite version
-    ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='#{Good.table_name}'")
+    # ActiveRecord::Base.connection.execute("delete from sqlite_sequence where name='#{Good.table_name}'")
   end
 end

@@ -6,7 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Task.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!(Task.table_name)
+
 User.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!(User.table_name)
 
 User.create(id: 1, ip: '213.184.130.66')
 

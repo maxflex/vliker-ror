@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/mer', as: 'rails_admin'
+
   controller :tasks do
     post 'blocks'   => :blocks
     post 'get_new'  => :get_new
     post 'stop'     => :stop
     post 'stats'    => :stats
+  end
+
+  resource :goods, controller: 'store', only: [] do
+    get :all
+  end
+
+  resource :payments, only: [] do
+    post 'yandex'
+    post 'webmoney'
   end
 
   # resources :tasks, only: [] do

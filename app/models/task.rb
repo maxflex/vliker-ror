@@ -49,7 +49,7 @@ class Task < ActiveRecord::Base
     task_data.each do |td|
       # check like time
       # (time from window.blur to window.focus)
-      time = td['ts'] / 1000
+      time = td['ts'] / 1000.0
       if time < 1.25 || time > (2 * 60)
         warnings += 1
         next
@@ -63,7 +63,7 @@ class Task < ActiveRecord::Base
       valid_task_ids << td['id']
     end
 
-    return valid_task_ids
+    valid_task_ids
   end
 
   #
@@ -76,7 +76,7 @@ class Task < ActiveRecord::Base
     tasks = Task.where(id: valid_task_ids)
 
     # add likes to other tasks and disable queue, because the task is already liked
-    tasks.update_all('likes = likes + 1 AND queue=0')
+    tasks.update_all('likes = likes + 1, queue=0')
 
     # de-activate finished tasks
     tasks.where('likes>=need').update_all(:active => false)
@@ -86,20 +86,19 @@ class Task < ActiveRecord::Base
   def self.report(task_report_ids)
     return false if task_report_ids.nil?
 
-    # get tasks
-    tasks = Task.where(id: task_report_ids)
-
     # increase reports
-    tasks.update_all('reports = reports + 1')
+    Task.increment_counter(:reports, task_report_ids)
 
     # inactivate tasks with report limit
-    tasks.where('reports >= 3').update_all(:active => false)
+    Task.where(id: task_report_ids)
+        .where('reports >= ?', 3)
+        .update_all(:active => false)
   end
 
   #
   # Add likes to OWN current task
   #
-  def like_own(count)
+  def add_needed(count)
     return false if count == 0
 
     self.need ||= 0
@@ -123,7 +122,7 @@ class Task < ActiveRecord::Base
   # Update task queue
   #
   def update_queue
-    queue = Task.where('active=? AND likes=0 AND id < ?', true, id).count
+    queue = Task.where('active=:active AND likes=0 AND id < :id', {active: true, id: id}).count
     self.update_attribute(:queue, queue)
   end
 
@@ -147,7 +146,7 @@ class Task < ActiveRecord::Base
         return errors.add :base, I18n.t('errors.this_is_example')
       end
 
-      if url.match('https?://(m.)?vk.com/').nil?
+      if url.match('https?://(m.)?vk.com').nil?
         return errors.add :base, I18n.t('errors.should_start_with_vk_com')
       end
 

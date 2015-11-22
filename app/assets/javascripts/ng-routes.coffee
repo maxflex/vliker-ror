@@ -13,7 +13,15 @@ angular.module 'VLiker'
       menu       : 2
     .when '/store',
       templateUrl: 'store.html'
+      controller : 'StoreCtrl'
       menu       : 3
+      resolve    :
+        goods: ($q, $http) ->
+          defer = $q.defer()
+          $http.get 'goods/all', {}
+            .then (response) ->
+              defer.resolve(response.data)
+          defer.promise
     .when '/instr',
       templateUrl: 'instr.html'
       menu       : 4

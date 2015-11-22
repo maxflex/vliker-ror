@@ -26,6 +26,7 @@
 //= require remarkable-bootstrap-notify/dist/bootstrap-notify.min
 //= require bootbox.js/bootbox
 //= require nprogress/nprogress
+//= require bxslider-4/dist/jquery.bxslider
 //
 //= require angular-rails-templates
 //= require_tree ./templates
@@ -33,5 +34,6 @@
 //= require ladda/dist/spin.min
 //= require ladda/dist/ladda.min
 //= require angular-ladda/dist/angular-ladda.min
+//= require js-base64/base64.min
 //
 //= require_tree .

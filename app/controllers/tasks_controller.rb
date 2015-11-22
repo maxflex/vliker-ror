@@ -34,6 +34,7 @@ class TasksController < ApplicationController
         format.json {render :json => {tasks: @six_tasks, current_task: @task} }
         format.html {render :json => {tasks: @six_tasks, current_task: @task} }
       else
+        format.html {render :json => @task.errors.full_messages, status: :unprocessable_entity}
         format.json {render :json => @task.errors.full_messages, status: :unprocessable_entity}
       end
     end
@@ -108,7 +109,7 @@ class TasksController < ApplicationController
         likes_count += params[:task_report_ids].length
       end
 
-      task.like_own(likes_count)
+      task.add_needed(likes_count)
 
       # remember the last task so its offered instead of example url
       cookies[:last_task] = task.url

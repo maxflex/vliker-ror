@@ -1,8 +1,74 @@
-.center.margin-100
-  = inline_svg('hearts')
-  .h-menu
-    %h1 Магазин откроется 1 ноября
-    .hint-text
-      Здесь можно будет приобрести мгновенные лайки, друзей и подписчиков, репосты, вип-доступ и другое
-  %button.btn.btn-primary.btn-lg.btn-round{style: 'margin-top: 20px; display: none'}
-    Сообщить об открытии и получить скидку
+-# .center.margin-100
+-#   = inline_svg('hearts')
+-#   .h-menu
+-#     %h1 Магазин откроется 1 ноября
+-#     .hint-text
+-#       Здесь можно будет приобрести мгновенные лайки, друзей и подписчиков, репосты, вип-доступ и другое
+-#   %button.btn.btn-primary.btn-lg.btn-round{style: 'margin-top: 20px; display: none'}
+-#     Сообщить об открытии и получить скидку
+
+.menu-store
+  .badge.badge-reviews
+    %b Отзывы покупателей
+  .row.good-types
+    .col-sm-4
+      .badge.pull-left{ng: {class: "{'active': current_page == 1}", click: 'current_page = 1'}}
+        +100
+    .col-sm-4
+      .badge{ng: {class: "{'active': current_page == 2}", click: 'current_page = 2'}}
+        +1,000
+    .col-sm-4
+      .badge.pull-right{ng: {class: "{'active': current_page == 3}", click: 'current_page = 3'}}
+        +10,000
+  .row
+    .col-sm-12
+      %ul.store-items
+        %li{ng: {repeat: 'page in [1, 2, 3]'}}
+          %store-items{page: 'page'}
+
+-# Способ оплаты
+#payment-methods.modal
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %center Выберите способ оплаты
+        %hr
+        .payment-methods-list
+          %div{ng: {repeat: 'payment_type in payment_types', click: 'proceedPayment(payment_type)'}}
+            %img{src: 'assets/ps/{{payment_type.logo}}_logo.png'}
+            %span {{payment_type.name}}
+          %div
+            %img{src: 'assets/ps/gift_red.png'}
+            %span Подарочный код
+
+-# Ввод ссылки для покупки
+#enter-link.modal
+  .modal-dialog
+    .modal-content
+      .modal-header.center
+        Покупка
+        %b +{{buying_good.count | number}}
+        {{buying_good.good_type.title}}
+      .modal-body
+        .input-group
+          %input.form-control{placeholder: 'Введите адрес ссылки', ng: {model: 'order_url'}}
+          %span.input-group-btn
+            %button.btn.btn-primary{ng: {click: 'proceedPurchase()'}}
+              купить
+-# Формы
+%form#form-ym{:action => "https://money.yandex.ru/quickpay/confirm.xml?button-text=01&button-size=s&button-color=orange", :method => "post", :name => "pay_ym"}
+  %input#receiver{:name => "receiver", :type => "hidden", :value => "41001237714205"}
+  %input#targets{:name => "targets", :type => "hidden", ng: {value: 'desc'}}
+  %input#b_sum.store-price{:name => "sum", :type => "hidden", ng: {value: 'buying_good.price'}}
+  %input#ym-info{:name => "label", :type => "hidden", ng: {value: 'goodid_link_userid'}}
+  %input#b_sum{:name => "quickpay-form", :type => "hidden", :value => "shop"}
+
+%form#form-wm{:action => "https://merchant.webmoney.ru/lmi/payment.asp", :method => "POST", :name => "main"}
+  %input.store-price{:name => "LMI_PAYMENT_AMOUNT", :type => "hidden", ng: {value: 'buying_good.price'}}
+  %input#store-desc-wm{:name => "LMI_PAYMENT_DESC_BASE64", :type => "hidden", ng: {value: 'bas64_desc'}}
+  %input{:name => "LMI_PAYMENT_NO", :type => "hidden", :value => "1129"}
+  %input{:name => "LMI_SECRET_KEY", :type => "hidden"}
+  %input{:name => "LMI_PAYEE_PURSE", :type => "hidden", :value => "R346320654015"}
+  %input#userid{:name => "USER_ID", :type => "hidden", ng: {value: 'user_id'}}
+  %input.order-link{:name => "ORDER_LINK", :type => "hidden", ng: {value: 'order_url'}}
+  %input.good-id{:name => "GOOD_ID", :type => "hidden", ng: {value: 'buying_good.id'}}

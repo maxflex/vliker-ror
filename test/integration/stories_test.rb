@@ -3,7 +3,7 @@ require 'test_helper'
 class StoriesTest < ActionDispatch::IntegrationTest
 
   setup do
-    Capybara.current_driver = :selenium # :selenium by default
+    Capybara.current_driver = :webkit # :selenium by default
   end
 
   test "user_session_created" do
@@ -13,15 +13,34 @@ class StoriesTest < ActionDispatch::IntegrationTest
     assert session[:user].present?
   end
 
-  test "start vliker" do
-    # Capybara.default_max_wait_time = 30
+  test "user inputs wrong urls" do
     visit root_path
-    assert page.has_content? 'Например'
+    assert page.has_content? I18n.t('main.index.example_link')
 
-    fill_in 'main-input', :with => 'http://vk.com/'
-    click_button 'start-button'
-
-    assert page.has_content? I18n.t('errors.specify_address')
+    start_and_expect_error 'http://vk.com', I18n.t('errors.specify_address')
+    start_and_expect_error Task::EXAMPLE_URLS.sample, I18n.t('errors.this_is_example')
+    start_and_expect_error 'random string', I18n.t('errors.should_start_with_vk_com')
   end
+
+  test "user inputs correct url" do
+    visit root_path
+
+    fill_in_url_and_start 'https://vk.com/vlikerhelp?z=photo316834465_374446185%2Falbum316834465_0%2Frev'
+    # assert page.selector '#like-blocks'
+  end
+
+
+  private
+
+
+    def fill_in_url_and_start(url)
+      fill_in 'main-input', :with => url
+      click_button 'start-button'
+    end
+
+    def start_and_expect_error(url, error)
+      fill_in_url_and_start url
+      assert page.has_content? error
+    end
 
 end

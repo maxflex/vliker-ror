@@ -45,4 +45,6 @@ Rails.application.configure do
 
   # Minimum task likes to be added to DB
   config.min_task_count    = 3
+
+  config.i18n.locale = :ru
 end

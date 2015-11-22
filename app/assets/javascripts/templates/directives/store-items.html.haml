@@ -1,0 +1,8 @@
+.store-item{ng: {repeat: "good in goods | filter:{page: page}"}}
+  %img{src: 'img/store/{{good.good_type.icon}}.png'}
+  %span
+    %b +{{good.count | number}}
+    {{good.good_type.title}}
+  %button.btn.btn-primary.pull-right{ng: {click: 'buy(good)'}}
+    %b {{good.price | number}}
+    руб

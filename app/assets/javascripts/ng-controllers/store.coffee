@@ -44,10 +44,13 @@ angular
       $scope.buy = (good) ->
         $scope.buying_good = good
         $('#enter-link').modal 'show'
+        return false
 
       $scope.proceedPurchase = ->
         $('#enter-link').modal 'hide'
         $('#payment-methods').modal 'show'
+        return false
 
       $scope.proceedPayment = (payment_type) ->
         $("#form-#{payment_type.short}").submit()
+        return false

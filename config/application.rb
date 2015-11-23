@@ -25,5 +25,7 @@ module Vliker
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    config.middleware.use Rack::Attack
   end
 end

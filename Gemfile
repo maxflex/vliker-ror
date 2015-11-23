@@ -60,6 +60,7 @@ gem 'whenever', :require => false
 gem 'rails_admin'
 
 gem 'pg'
+gem 'rack-attack'
 
 group :production do
   # gem 'rails_12factor'

@@ -37,7 +37,9 @@
                                   'progress-bar-danger': !task.active && (task.reports >= 3),
                                   'progress-bar-primary': task.active && (task.likes > 0)}"},
       style: 'width: {{task.likes / task.need * 100}}%'}
-        %span{ng: {show: 'task.likes > 0'}} {{task.likes / task.need * 100 | number:0}}%
+        %span{ng: {show: 'task.likes > 0 && task.likes < task.need'}} {{task.likes / task.need * 100 | number:0}}%
+        -# если больше 100% накручено, пишем 100
+        %span{ng: {show: 'task.likes > 0 && task.likes >= task.need'}} {{100}}%
 
 
 -# TASKS LOADING

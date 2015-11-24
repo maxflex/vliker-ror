@@ -15,7 +15,7 @@ class PaymentsController < ActionController::Base
     # hash generate
     hash = [
       params[:notification_type],
-      params[:operand_id],
+      params[:operation_id],
       params[:amount],
       params[:currency],
       params[:datetime],
@@ -26,9 +26,9 @@ class PaymentsController < ActionController::Base
     ].join('&')
 
     # check hash
-    # puts hash.colorize :yellow
-    # puts Digest::SHA1.hexdigest(hash).colorize :red
-    # puts params[:sha1_hash].colorize :green
+    puts hash.colorize :yellow
+    puts Digest::SHA1.hexdigest(hash).colorize :red
+    puts params[:sha1_hash].colorize :green
     return if Digest::SHA1.hexdigest(hash) != params[:sha1_hash]
 
     order = Order.new(good_id: order_data[0], link: order_data[1])

@@ -41,6 +41,13 @@ angular
           pager   : false
           controls: false
 
+      # comission is to be paid by payee
+      # https://money.yandex.ru/doc.xml?id=526991
+      $scope.calculateSum = (sum) ->
+        # a — коэффициент комиссии. При переводе из кошелька — 0,005, при переводе с карты — 0,02.
+        a = .005
+        sum + sum * (a / (1 + a))
+
       $scope.buy = (good) ->
         $scope.buying_good = good
         $('#enter-link').modal 'show'

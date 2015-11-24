@@ -59,7 +59,7 @@
 %form#form-ym{:action => "https://money.yandex.ru/quickpay/confirm.xml?button-text=01&button-size=s&button-color=orange", :method => "post", :name => "pay_ym"}
   %input#receiver{:name => "receiver", :type => "hidden", :value => "41001237714205"}
   %input#targets{:name => "targets", :type => "hidden", ng: {value: 'desc'}}
-  %input#b_sum.store-price{:name => "sum", :type => "hidden", ng: {value: 'buying_good.price'}}
+  %input#b_sum.store-price{:name => "sum", :type => "hidden", ng: {value: 'calculateSum(buying_good.price)'}}
   %input#ym-info{:name => "label", :type => "hidden", ng: {value: 'goodid_link_userid'}}
   %input#b_sum{:name => "quickpay-form", :type => "hidden", :value => "shop"}
 

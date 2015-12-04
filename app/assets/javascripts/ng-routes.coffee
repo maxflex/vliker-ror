@@ -22,6 +22,10 @@ angular.module 'VLiker'
             .then (response) ->
               defer.resolve(response.data)
           defer.promise
+    .when '/store/reviews',
+      templateUrl: 'reviews.html'
+      controller : 'ReviewsCtrl'
+      menu       : 3
     .when '/instr',
       templateUrl: 'instr.html'
       menu       : 4

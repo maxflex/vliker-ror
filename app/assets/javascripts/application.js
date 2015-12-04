@@ -14,6 +14,8 @@
 //= require angular
 //= require angular-route
 //= require angular-animate
+//= require angular-resource
+//
 //= require ng-rails-csrf
 //= require bootstrap-sprockets
 //= require jquery_ujs
@@ -35,5 +37,9 @@
 //= require ladda/dist/ladda.min
 //= require angular-ladda/dist/angular-ladda.min
 //= require js-base64/base64.min
+//
+//= require moment/min/moment.min
+//= require moment/locale/ru
+//= require angular-moment/angular-moment.min
 //
 //= require_tree .

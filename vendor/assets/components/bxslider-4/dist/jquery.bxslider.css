@@ -6,7 +6,7 @@
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
 
-/** VARIABLES 
+/** VARIABLES
 ===================================*/
 /** RESET AND LAYOUT
 ===================================*/
@@ -51,7 +51,8 @@ ul.bxslider {
 /* LOADER */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url('images/bx_loader.gif') center center no-repeat #ffffff;
+  /*background: url('images/bx_loader.gif') center center no-repeat #ffffff;*/
+  background: url('/assets/SVG-Loaders/svg-loaders/three-dots.svg') center center no-repeat #ffffff;
   height: 100%;
   width: 100%;
   position: absolute;

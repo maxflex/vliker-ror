@@ -29,7 +29,9 @@
     "SVG-Loaders": "svg-loaders#~1.0.2",
     "angular-ladda": "~0.3.1",
     "bxslider-4": "~4.2.5",
-    "js-base64": "~2.1.9"
+    "js-base64": "~2.1.9",
+    "moment": "momentjs#~2.10.6",
+    "angular-moment": "~0.10.3"
   },
   "resolutions": {
     "spin.js": "~2.0.2"

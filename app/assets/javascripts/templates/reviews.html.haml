@@ -1,0 +1,37 @@
+-# .center.margin-100
+-#   = inline_svg('hearts')
+-#   .h-menu
+-#     %h1 Магазин откроется 1 ноября
+-#     .hint-text
+-#       Здесь можно будет приобрести мгновенные лайки, друзей и подписчиков, репосты, вип-доступ и другое
+-#   %button.btn.btn-primary.btn-lg.btn-round{style: 'margin-top: 20px; display: none'}
+-#     Сообщить об открытии и получить скидку
+
+.menu-store
+  .badge.badge-reviews.active
+    %b Отзывы покупателей
+  %a{href: '#store'}
+    .badge.badge-back
+      %b Вернуться в магазин
+%hr
+  %center.text-hr
+    Оставить отзыв вы сможете после оплаты услуги в разделе «
+    %a{href: '#stats'}><
+      Статистика
+    »
+%hr
+
+-# LOADING
+%center.margin-200{ng: {show: 'Reviews === undefined'}}
+  = inline_svg('three-dots')
+
+%div{ng: {repeat: 'Review in Reviews'}}
+  %section.comments
+    .animated{ng: {class: "$index % 2 == 0 ? 'from-me fadeInRight' : 'from-them fadeInLeft'"}}
+      %p {{Review.text}}
+      %div.review-link
+        %span
+          +{{Review.order.good.count | number}} {{Review.order.good.good_type.title}}
+        %span.pull-left.review-time{"am-time-ago" => "Review.order.date_done"}
+        %a{target: '_blank', href: '{{Review.order.link}}'} {{Review.order.link}}
+    .clear

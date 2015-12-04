@@ -8,8 +8,9 @@
 -#     Сообщить об открытии и получить скидку
 
 .menu-store
-  .badge.badge-reviews
-    %b Отзывы покупателей
+  %a{href: '#store/reviews'}
+    .badge.badge-reviews
+      %b Отзывы покупателей
   .row.good-types
     .col-sm-4
       .badge.pull-left{ng: {class: "{'active': current_page == 1}", click: 'current_page = 1'}}

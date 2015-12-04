@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get :all
   end
 
+  resources :reviews
+
   resource :payments, only: [] do
     post 'yandex'
     post 'webmoney'

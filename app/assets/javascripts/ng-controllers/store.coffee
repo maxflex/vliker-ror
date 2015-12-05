@@ -8,6 +8,10 @@ angular
       slider = undefined
       $scope.goods = goods
 
+      # PC — оплата со счета в Яндекс.Деньгах
+      # AC — оплата с банковской карты
+      $scope.payment_mode = 'AC'
+
       $scope.payment_types = [
           id: 1
           name: 'Яндекс.Деньги'
@@ -15,9 +19,9 @@ angular
           short: 'ym'
         ,
           id: 2
-          name: 'WebMoney'
-          logo: 'webmoney'
-          short: 'wm'
+          name: 'Оплата картой'
+          logo: 'creditcard'
+          short: 'ym'
         ,
           id: 3
           name: 'Visa QIWI Wallet'
@@ -40,12 +44,16 @@ angular
         slider = $('.store-items').bxSlider
           pager   : false
           controls: false
+        $('.store-jumbotrons').bxSlider
+          controls: false
+          auto    : true
+          pause   : 10 * 1000
 
       # comission is to be paid by payee
       # https://money.yandex.ru/doc.xml?id=526991
       $scope.calculateSum = (sum) ->
         # a — коэффициент комиссии. При переводе из кошелька — 0,005, при переводе с карты — 0,02.
-        a = .005
+        a = if $scope.payment_mode is 'PC' then .005 else .02
         sum + sum * (a / (1 + a))
 
       $scope.buy = (good) ->
@@ -59,5 +67,12 @@ angular
         return false
 
       $scope.proceedPayment = (payment_type) ->
-        $("#form-#{payment_type.short}").submit()
+        # Яндекс деньги. Оплата картой или ЯД?
+        if payment_type.id is 1
+          $scope.payment_mode = 'PC'
+        if payment_type.id is 2
+          $scope.payment_mode = 'AC'
+
+        $timeout ->
+          $("#form-#{payment_type.short}").submit()
         return false

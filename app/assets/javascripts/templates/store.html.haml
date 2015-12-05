@@ -1,12 +1,31 @@
--# .center.margin-100
--#   = inline_svg('hearts')
--#   .h-menu
--#     %h1 Магазин откроется 1 ноября
--#     .hint-text
--#       Здесь можно будет приобрести мгновенные лайки, друзей и подписчиков, репосты, вип-доступ и другое
--#   %button.btn.btn-primary.btn-lg.btn-round{style: 'margin-top: 20px; display: none'}
--#     Сообщить об открытии и получить скидку
-
+.store-jumbotrons
+  %li
+    .jumbotron.jumbotron-success.center
+      %h3.no-margin Только живые люди
+      %p
+        Никаких ботов и фейков. Все заказы на нашем сайте выполняются «офферами» – живыми людьми, которые вступают за вознаграждение
+  %li
+    .jumbotron.jumbotron-pink.center
+      %h3.no-margin Высокая скорость
+      %p
+        Выполнение начинается мгновенно. Скорость: <b>+100</b> – в течение суток, <b>+1,000</b> – в течение 2-3 суток,
+        <b>+10,000</b> – в течение недели
+  %li
+    .jumbotron.jumbotron-primary.center
+      %h3.no-margin Круглосуточная поддержка
+      %p
+        Поддержка клиентов доступна по телефону <phone>+7 (495) 540-51-59</phone>
+        и <a href=
+        = "http://vk.com/write#{Rails.configuration.support_id}"
+        target="_target" class="dotted-link">онлайн</a> круглосуточно
+    %li
+      .jumbotron.jumbotron.center
+        %h3.no-margin Удобное отслеживание
+        %p
+          Отслеживать процесс выполнения заказа вы можете в режиме реального времени в разделе «
+          %a{href: '#stats'}><
+            Статистика
+          »
 .menu-store
   %a{href: '#store/reviews'}
     .badge.badge-reviews
@@ -63,6 +82,7 @@
   %input#b_sum.store-price{:name => "sum", :type => "hidden", ng: {value: 'calculateSum(buying_good.price)'}}
   %input#ym-info{:name => "label", :type => "hidden", ng: {value: 'goodid_link_userid'}}
   %input#b_sum{:name => "quickpay-form", :type => "hidden", :value => "shop"}
+  %input{name: 'paymentType', type: 'hidden', "ng-value" => "payment_mode"}
 
 %form#form-wm{:action => "https://merchant.webmoney.ru/lmi/payment.asp", :method => "POST", :name => "main"}
   %input.store-price{:name => "LMI_PAYMENT_AMOUNT", :type => "hidden", ng: {value: 'buying_good.price'}}

@@ -1,5 +1,9 @@
 class GenerateFakeOrdersAndReviews < ActiveRecord::Migration
   def up
+    Review.delete_all
+    Order.delete_all
+    ActiveRecord::Base.connection.reset_pk_sequence!(Review.table_name)
+    ActiveRecord::Base.connection.reset_pk_sequence!(Order.table_name)
     seed_orders
     seed_reviews
   end

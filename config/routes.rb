@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'user/user_id'
+
   mount RailsAdmin::Engine => '/mer', as: 'rails_admin'
 
   controller :tasks do
@@ -18,6 +20,10 @@ Rails.application.routes.draw do
   resource :payments, only: [] do
     post 'yandex'
     post 'webmoney'
+  end
+
+  controller :users, only: [] do
+    get 'user_id'
   end
 
   # resources :tasks, only: [] do

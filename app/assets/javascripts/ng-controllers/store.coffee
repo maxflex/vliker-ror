@@ -33,13 +33,6 @@ angular
         return if slider is undefined
         slider.goToSlide(newVal - 1)
 
-      $scope.$watch 'order_url', (newVal, oldVal) ->
-        return if newVal is undefined
-        # Собираем строку (id товара|ссылка на заказ для яндекса|user id)
-       	$scope.goodid_link_userid = "#{$scope.buying_good.id}|#{$scope.order_url}|#{$scope.user_id}"
-        $scope.desc = "Покупка +#{$scope.buying_good.count} #{$scope.buying_good.good_type.title} на VLiker.ru"
-        $scope.bas64_desc = Base64.encode $scope.desc
-
       $timeout ->
         slider = $('.store-items').bxSlider
           pager   : false
@@ -59,20 +52,48 @@ angular
       $scope.buy = (good) ->
         $scope.buying_good = good
         $('#enter-link').modal 'show'
-        return false
+        false
 
       $scope.proceedPurchase = ->
         $('#enter-link').modal 'hide'
         $('#payment-methods').modal 'show'
-        return false
+        false
 
       $scope.proceedPayment = (payment_type) ->
-        # Яндекс деньги. Оплата картой или ЯД?
-        if payment_type.id is 1
-          $scope.payment_mode = 'PC'
-        if payment_type.id is 2
-          $scope.payment_mode = 'AC'
+        # Создаем пользователя только после того, как он нажал "купить"
+        if !$scope.user_id then getUserId() else updateFormParams()
+        # Если оплата Яндексом, определяем метод оплаты (карта или яд)
+        if payment_type.id in [1..2] then setYandexMethod(payment_type.id)
+        postForm(payment_type.short)
 
+
+
+      #### ФУНКЦИИ ГЕНЕРАЦИИ ПЛАТЕЖА ####
+
+
+
+      updateFormParams = ->
+        # Собираем строку (id товара|ссылка на заказ для яндекса|user id)
+       	$scope.goodid_link_userid = "#{$scope.buying_good.id}|#{$scope.order_url}|#{$scope.user_id}"
+        $scope.desc = "Покупка +#{$scope.buying_good.count} #{$scope.buying_good.good_type.title} на VLiker.ru"
+        $scope.bas64_desc = Base64.encode $scope.desc
+
+      getUserId = ->
+        $http.get 'user_id'
+          .then (response) ->
+            $scope.user_id = response.data
+            updateFormParams()
+
+      setYandexMethod = (payment_type_id) ->
+        # Яндекс деньги. Оплата картой или ЯД?
+        switch payment_type_id
+          when 1 then $scope.payment_mode = 'PC'
+          when 2 then $scope.payment_mode = 'AC'
+
+      postForm = (short)->
+        # не отправляем форму пока не получим user_id
         $timeout ->
-          $("#form-#{payment_type.short}").submit()
-        return false
+          if !$scope.user_id
+            postForm(short)
+          else
+            $("#form-#{short}").submit()

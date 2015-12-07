@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 #  ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -83,6 +82,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
+
+  gem 'nokogiri'
 end
 
 group :test do

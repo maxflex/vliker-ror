@@ -297,6 +297,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   ng-rails-csrf
+  nokogiri
   pg
   rack-attack
   rails (= 4.2.3)

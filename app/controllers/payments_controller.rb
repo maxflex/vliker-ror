@@ -26,18 +26,13 @@ class PaymentsController < ActionController::Base
     ].join('&')
 
     # check hash
-    puts hash.colorize :yellow
-    puts Digest::SHA1.hexdigest(hash).colorize :red
-    puts params[:sha1_hash].colorize :green
+    # puts hash.colorize :yellow
+    # puts Digest::SHA1.hexdigest(hash).colorize :red
+    # puts params[:sha1_hash].colorize :green
     return if Digest::SHA1.hexdigest(hash) != params[:sha1_hash]
 
-    order = Order.new(good_id: order_data[0], link: order_data[1])
-
-    if !order_data[3].nil? && order_data[3].to_i > 0
-      order.user_id = order_data[3]
-    end
-
-    order.save
+    order = Order.new(good_id: order_data[0], link: order_data[1], user_id: order_data[2])
+    order.external_order
 
     render text: 'HTTP 200 OK'
   end

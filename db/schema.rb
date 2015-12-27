@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125204836) do
+ActiveRecord::Schema.define(version: 20151214141822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20151125204836) do
     t.integer  "external_done"
     t.integer  "external_need"
     t.datetime "date_done"
-    t.boolean  "done"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "done",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "orders", ["good_id"], name: "index_orders_on_good_id", using: :btree
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20151125204836) do
     t.integer  "order_id"
     t.text     "text"
     t.integer  "status",     default: 0
-    t.boolean  "hidden"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "hidden",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "reviews", ["order_id"], name: "index_reviews_on_order_id", using: :btree

@@ -14,7 +14,7 @@ module OrderExternal extend ActiveSupport::Concern
   EXTERNAL_SERVICE_URL = 'http://smm-lab.xyz'
 
   def external_login
-    send_request("/", LOGIN_DATA)
+    send_request("/", LOGIN_DATA) if @cookie.nil?
   end
 
   def add_order_to_cart

@@ -11,7 +11,6 @@ RSpec.describe Order, type: :model do
     it 'logins external service' do
       @order.external_login
       expect(@order.cookie).to be_present
-      puts @order.cookie.colorize :blue
     end
 
     it 'adds order to cart' do

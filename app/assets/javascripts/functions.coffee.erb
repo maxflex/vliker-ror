@@ -30,9 +30,12 @@
 ###
 
 @topAnimation = () ->
-  $('#animation-block, #likes-iframe').slideUp animation_speed
+  $('#animation-block, #likes-iframe, #store-ad').slideUp animation_speed
   showContent()
   $('body').css 'overflow-y': 'visible'
+  # $('#store-ad').addClass('animated zoomOut')
+
+
   $('.footer').addClass('animated fadeOutDown').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
     $(this).removeClass 'animated fadeOutDown navbar-fixed-bottom'
 
@@ -43,6 +46,8 @@
 
 @downAnimation = (callback) ->
   $('#animation-block, #likes-iframe').slideDown animation_speed
+  $('#store-ad').slideDown().addClass('animated zoomIn')
+
   $('body').css 'overflow-y': 'hidden'
   hideContent()
   $('.footer').addClass('navbar-fixed-bottom animated fadeInUp').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
@@ -60,7 +65,7 @@
 
 @startAnimation = ->
   showContent()
-  $('#row-ads, #row-logo, #row-example, #row-menu, #likes-iframe').slideUp animation_speed
+  $('#row-ads, #row-logo, #row-example, #row-menu, #likes-iframe, #store-ad').slideUp animation_speed
 
 ###*
 # Анимация конца накрутки.
@@ -68,7 +73,7 @@
 ###
 
 @stopAnimation = (callback) ->
-  $('#row-ads, #row-logo, #row-example, #row-menu, #likes-iframe').slideDown animation_speed
+  $('#row-ads, #row-logo, #row-example, #row-menu, #likes-iframe, #store-ad').slideDown animation_speed
   hideContent()
   if callback isnt undefined
     callback()

@@ -1,0 +1,35 @@
+{
+  "name": "nifty-modal",
+  "authors": [
+    "John-Alan Simmons"
+  ],
+  "description": "A JQuery modal system based from http://tympanus.net/codrops/2013/06/25/nifty-modal-window-effects/",
+  "main": [
+    "lib/nifty.js",
+    "lib/nifty.css"
+  ],
+  "keywords": [
+    "modals",
+    "modal",
+    "jquery"
+  ],
+  "license": "MIT",
+  "homepage": "http://tympanus.net/codrops/2013/06/25/nifty-modal-window-effects/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "e634bb9f55",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e634bb9f55134308e54cf8be244debd4b0e485f1"
+  },
+  "_source": "git://github.com/iamytg/nifty-modal.git",
+  "_target": "*",
+  "_originalSource": "nifty-modal",
+  "_direct": true
+}

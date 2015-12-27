@@ -31,7 +31,9 @@
     "bxslider-4": "~4.2.5",
     "js-base64": "~2.1.9",
     "moment": "momentjs#~2.10.6",
-    "angular-moment": "~0.10.3"
+    "angular-moment": "~0.10.3",
+    "nifty-modal": "*",
+    "font-awesome": "~4.5.0"
   },
   "resolutions": {
     "spin.js": "~2.0.2"

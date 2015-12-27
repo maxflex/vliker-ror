@@ -32,6 +32,6 @@
       %div.review-link
         %span
           +{{Review.order.good.count | number}} {{Review.order.good.good_type.title}}
-        %span.pull-left.review-time{"am-time-ago" => "Review.order.date_done"}
+        %span.pull-left.review-time{'am-time-ago' => 'Review.created_at', 'ng-show' => 'Review.id > 7'}
         %a{target: '_blank', href: '{{Review.order.link}}'} {{Review.order.link}}
     .clear

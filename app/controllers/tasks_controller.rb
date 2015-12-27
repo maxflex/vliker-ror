@@ -128,11 +128,15 @@ class TasksController < ApplicationController
     user_id = session[:user]['id']
 
     if !user_id.nil?
-      @tasks = Task.get_stats(user_id)
+      @response = {
+        tasks:  Task.get_stats(user_id),
+        orders: Order.where(user_id: user_id),
+      }
     end
 
     respond_to do |format|
-      format.json {render :json => @tasks}
+      # format.json { render :json => @response.to_json(:include => {:good => {:methods => :full_name}}) }
+      format.json { render :json => @response.to_json(:include => [{:good => {:include => :good_type}}, :review]) }
     end
   end
 

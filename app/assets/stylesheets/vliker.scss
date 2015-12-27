@@ -62,8 +62,103 @@ $footer_gray: #BAC2CC;
     }
 }
 
+.raleway-bold {
+  font-family: RalewayBold;
+}
+
+.raleway-medium {
+  font-family: RalewayMedium;
+}
+
 .no-margin {
   margin: 0 !important;
+}
+
+#store-ad {
+  margin-top: 50px;
+  & .sample-good {
+    & img {
+      height: 64px;
+      width: 64px;
+      margin-right: 10px;
+    }
+  }
+
+  & .btn-3 {
+  	background: #5F83AA !important;
+  	color: #fff !important;
+    &:before {
+    	position: absolute;
+    	height: 100%;
+    	left: 0;
+    	top: 0;
+    	line-height: 3;
+    	font-size: 140%;
+    	width: 60px;
+    }
+    &:hover {
+    	background: #7A9EC0 !important;
+    }
+    &:active {
+    	background: #527599 !important;
+    	top: 2px;
+    }
+  }
+
+  & .icon-cart{
+    &:before {
+      content: "\f07a";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 40px;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      line-height: 56px;
+      width: 60px;
+      background: rgba(0,0,0,0.1);
+    }
+  }
+
+  & .btn-3a {
+    padding: 18px 20px 18px 80px !important;
+  }
+
+  & .btn-2c {
+    border-radius: 5px;
+    &:active {
+      box-shadow: 0 0 #4B6D92;
+      top: 6px;
+    }
+  }
+  & .btn-2 {
+      background: #5F83AA !important;
+      color: #fff !important;
+      box-shadow: 0 6px #4B6D92;
+      -webkit-transition: none !important;
+      -moz-transition: none !important;
+      transition: none !important;
+  }
+  & .btn {
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      background: none;
+      cursor: pointer;
+      padding: 25px 80px;
+      display: inline-block;
+      margin: 15px 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 5px;
+      // font-weight: 700;
+      outline: none;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+  }
 }
 
 h3 {
@@ -1003,6 +1098,9 @@ h4 {
 	&.high-opacity {
 		opacity: .2;
 	}
+  &.low-opacity {
+    opacity: .75;
+  }
 	&:hover {
 		opacity: 1;
 	}

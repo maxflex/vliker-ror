@@ -38,6 +38,8 @@
 //= require angular-ladda/dist/angular-ladda.min
 //= require js-base64/base64.min
 //
+//= require nifty-modal/lib/nifty
+//
 //= require moment/min/moment.min
 //= require moment/locale/ru
 //= require angular-moment/angular-moment.min

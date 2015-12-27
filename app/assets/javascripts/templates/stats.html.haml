@@ -1,3 +1,43 @@
+-# ORDERS
+.row.stats-row{ng: {repeat: 'order in orders track by $index'}}
+  .col-sm-4
+    .vliker-block.fit-width
+      %a{href: '{{order.link}}', target: '_blank'}
+        %img{src: "#{Rails.configuration.thumbnail_service}{{order.link}}"}
+  .col-sm-8
+    %h4
+      -# ACTIVE
+      %span
+        %b +{{order.good.count | number}}
+        {{order.good.good_type.title}}
+
+      %span.pull-right.label.label-default{ng: {show: '!order.done'}}
+        %span.glyphicon{ng: {class: "{'glyphicon-heart'     : order.good.good_type_id == 1,
+                                      'glyphicon-user'      : order.good.good_type_id == 2 || order.good.good_type_id == 3,
+                                      'glyphicon-share-alt' : order.good.good_type_id == 4,
+                                      'glyphicon-comment'   : order.good.good_type_id == 5,
+                                      'glyphicon-align-left': order.good.good_type_id == 6,
+        }"}}
+        %span
+          {{order.external_done}}/
+        {{order.external_need}}
+
+      %button.btn.btn-default.pull-right{ng: {show: 'order.done && !order.review', click: 'review(order)'}, style: 'padding: 0 10px'}
+        оставить отзыв
+
+      %span.pull-right.opacity-hover.low-opacity.raleway-medium{ng: {class: "{'text-success': !order.review.status, 'text-danger': order.review.status}", show: 'order.review', click: 'watchReview(order.review)'},
+        style: 'font-size: 12px; line-height: 24px'}
+        отзыв оставлен
+
+    .progress{ng: {class: "{'progress-striped active': !order.done}"}}
+      .progress-bar{ng: {class: "{'progress-bar-default': order.external_done == 0,
+                                  'progress-bar-primary': !order.done && (order.external_done > 0)}"},
+      style: 'width: {{order.external_done / order.external_need * 100}}%'}
+        %span{ng: {show: 'order.external_done > 0 && order.external_done < order.external_need'}} {{order.external_done/ order.external_need * 100 | number:0}}%
+        -# если больше 100% накручено, пишем 100
+        %span{ng: {show: 'order.external_done > 0 && order.external_done >= order.external_need'}} 100%
+
+-# TASKS
 .row.stats-row{ng: {repeat: 'task in tasks track by $index'}}
   .col-sm-4
     .vliker-block.fit-width
@@ -5,7 +45,6 @@
         %img{src: "#{Rails.configuration.thumbnail_service}{{task.url}}"}
   .col-sm-8
     %h4
-
       -# ACTIVE
       %span{ng: {show: 'task.active'}}
         %span{ng: {show: 'task.queue > 0 && !task.likes'}}
@@ -22,10 +61,10 @@
           Заблокировано
 
       %span.pull-right.label.label-default{ng: {hide: '!task.active && (task.reports >= 3)'}}
-        %span{ng: {show: 'task.likes > 0'}}><
+        %span.glyphicon.glyphicon-heart
+        %span{ng: {show: 'task.likes > 0'}}
           {{task.likes}}/
         {{task.need}}
-        %span.glyphicon.glyphicon-heart><
 
       %span.hint--top.pull-right{ng: {show: '!task.active && (task.reports >= 3)'},
         "data-hint" => "Страница недоступна, удалена или закрыта – пользователи не могут попасть на неё и поставить лайк"}
@@ -39,7 +78,7 @@
       style: 'width: {{task.likes / task.need * 100}}%'}
         %span{ng: {show: 'task.likes > 0 && task.likes < task.need'}} {{task.likes / task.need * 100 | number:0}}%
         -# если больше 100% накручено, пишем 100
-        %span{ng: {show: 'task.likes > 0 && task.likes >= task.need'}} {{100}}%
+        %span{ng: {show: 'task.likes > 0 && task.likes >= task.need'}} 100%
 
 
 -# TASKS LOADING
@@ -47,7 +86,7 @@
   = inline_svg('three-dots')
 
 -# NO TASKS
-.center.margin-100{ng: {show: 'tasks === null || tasks.length == 0'}}
+.center.margin-100{ng: {show: 'tasks === null && orders === null'}}
   = inline_svg('hearts')
   .h-menu
     %h1 Статистика пуста
@@ -55,3 +94,34 @@
       Здесь будет отображаться статистика по накрученным лайкам, времени их поступления на страницу, места в очереди и другое
   %button.btn.btn-primary.btn-lg.btn-round{style: 'margin-top: 20px', ng: {click: 'setMenu(2)'}}
     Пристуить к накрутке
+
+
+-# REVIEW FORM
+#leave-review.nifty-modal.fade-in-scale
+  .md-content
+    .md-title
+      %b
+        +{{review_order.good.count | number}}
+      {{review_order.good.good_type.title}}
+    .md-body
+      .form-group
+        .btn-group{style: 'width: 100%'}
+          %button.btn.btn-success{style: 'width: 50%', ng: {click: 'review_order.status = 0'}} положительный
+          %button.btn.btn-danger{style: 'width: 50%', ng: {click: 'review_order.status = 1'}} отрицательный
+      .form-group
+        %textarea.form-control{placeholder: 'Напишите отзыв здесь...', 'ng-model' => 'review_order.text'}
+      .center
+        %button.btn{style: 'width: 100%',
+          ng: {class: "{'btn-success': !review_order.status, 'btn-danger': review_order.status}", click: 'leaveReview()'}}
+          оставить отзыв
+
+-# WATCH REVIEW
+#watch-review.nifty-modal.fade-in-scale
+  .md-content
+    .md-title
+      %span{ng: {class: "{'text-success': !review.status, 'text-danger': review.status}"}}
+        %b
+          {{review.status ? 'Негативный' : 'Положительный'}} отзыв
+    .md-body
+      {{review.text}}
+.md-overlay

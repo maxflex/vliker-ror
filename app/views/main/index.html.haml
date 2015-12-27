@@ -4,6 +4,11 @@
   #animation-block
     #row-ads.row{style: 'height: 200px'}
       .col-sm-12
+        %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+        / VLIKER 3.0
+        %ins.adsbygoogle{"data-ad-client" => "ca-pub-1332866126809615", "data-ad-slot" => "7937105138", :style => "display:inline-block;width:728px;height:90px"}
+        :javascript
+          (adsbygoogle = window.adsbygoogle || []).push({});
     #row-logo.row
       .col-sm-2
       .col-sm-8{style: 'text-align: center'}
@@ -55,6 +60,14 @@
           'ng-click' => 'setMenu(4)'}
       .animate-show-down.menu-label#menu-label-4{ng: {show: '$root.menu_hover[4]'}}
         = t('.menu.instr')
+
+  .row#store-ad
+    .col-sm-12.center
+      %button.btn.btn-3.btn-3a.icon-cart{ng: {click: 'setMenu(3)'}}
+        %b= "+" + number_with_delimiter(@random_good.count)
+        = @random_good.good_type.title
+        мгновенно!
+
 
   .row.animated#row-content
     .col-sm-2

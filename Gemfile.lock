@@ -292,6 +292,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   enum_help
+  font-awesome-rails
   haml-rails (~> 0.9)
   hirb-unicode
   jbuilder (~> 2.0)

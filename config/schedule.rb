@@ -12,15 +12,15 @@ end
 #
 every 10.minutes do
   command "echo '100 orders updated!'"
-  runnder 'Order.update_statuses(100)'
+  runner 'Order.update_statuses(100)'
 end
 every 30.minutes do
   command "echo '1000 orders updated!'"
-  runnder 'Order.update_statuses(1000)'
+  runner 'Order.update_statuses(1000)'
 end
 every 1.hour do
   command "echo '10000 orders updated!'"
-  runnder 'Order.update_statuses(10000)'
+  runner 'Order.update_statuses(10000)'
 end
 
 # iNodes clean

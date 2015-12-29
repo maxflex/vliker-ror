@@ -1,4 +1,5 @@
 set :output, "#{path}/log/cron.log"
+set :environment, ENV['RAILS_ENV']
 
 # update tasks queue
 every 15.minutes do

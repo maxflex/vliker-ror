@@ -35,8 +35,8 @@ production:
   <<: *default
   database: vliker_production
   username: rails
-  password: M5glzzpMlQ
-  # password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  # password: M5glzzpMlQ
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test

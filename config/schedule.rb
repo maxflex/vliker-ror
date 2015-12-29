@@ -18,6 +18,7 @@ end
 #
 every 1.minute do
   command "echo '100 orders updated!'"
+  command "echo 'PASSWORD: #{ENV['APP_DATABASE_PASSWORD']}'"
   runner 'Order.update_statuses(100)'
 end
 # every 30.minutes do

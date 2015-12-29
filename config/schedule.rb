@@ -1,5 +1,11 @@
 set :output, "#{path}/log/cron.log"
 set :environment, ENV['RAILS_ENV']
+env :APP_DATABASE_PASSWORD, ENV['APP_DATABASE_PASSWORD']
+# env 'APP_DATABASE_PASSWORD', 'M5glzzpMlQ'
+
+every 15.minutes do
+
+end
 
 # update tasks queue
 # every 15.minutes do

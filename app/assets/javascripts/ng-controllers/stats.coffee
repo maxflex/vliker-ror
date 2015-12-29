@@ -3,6 +3,7 @@ angular
   .controller "StatsCtrl", ($scope, $http) ->
       $http.post 'stats', {}
         .then (response) ->
+          console.log response
           $scope.tasks = response.data.tasks
           $scope.orders = response.data.orders
           console.log response.data

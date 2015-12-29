@@ -1,7 +1,7 @@
 set :output, "#{path}/log/cron.log"
-# set :environment, ENV['RAILS_ENV']
-# env :APP_DATABASE_PASSWORD, ENV['APP_DATABASE_PASSWORD']
-# env :PATH, ENV['PATH']
+set :environment, ENV['RAILS_ENV']
+env :APP_DATABASE_PASSWORD, ENV['APP_DATABASE_PASSWORD']
+env :PATH, ENV['PATH']
 
 every 1.minutes do
     command "echo '100 orders updated!'"

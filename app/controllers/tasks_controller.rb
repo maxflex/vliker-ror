@@ -126,10 +126,9 @@ class TasksController < ApplicationController
   #
   def stats
     user_id = session[:user]['id']
-
     if !user_id.nil?
       @tasks = Task.get_stats(user_id)
-      @orders = Order.where(user_id: user_id)
+      @orders = Order::stats(user_id)
     end
   end
 

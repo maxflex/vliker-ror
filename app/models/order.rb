@@ -13,6 +13,11 @@ class Order < ActiveRecord::Base
     save
   end
 
+  # Get orders in stats
+  def self.stats(user_id)
+    where(user_id: user_id).order(id: :desc)
+  end
+
   #
   # CRON: Update status
   #

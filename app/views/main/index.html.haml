@@ -43,6 +43,8 @@
       .animate-show-down.menu-label#menu-label-1{ng: {show: '$root.menu_hover[1]'}}
         = t('.menu.wall')
     .col-sm-2
+      - if @notification_count > 0
+        .new-circle.unseen.hint--top{"data-hint" => "Есть новые задания в процессе"}
       = retina_image_tag 'icons/Heart.png', {'ng-mouseenter' => '$root.menu_hover[2] = true',
           'ng-mouseleave' => '$root.menu_hover[2] = false', 'ng-class' => '{"hovered": $root.menu_hover[2], "no-opacity": menu == 2}',
           'ng-click' => 'setMenu(2)'}

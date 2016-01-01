@@ -114,7 +114,7 @@ class Task < ActiveRecord::Base
   # Get task stats
   #
   def self.get_stats(user_id)
-    @tasks = Task.where('user_id = ?', user_id)
+    where('user_id = ?', user_id).order(active: :desc, id: :desc)
   end
 
   #

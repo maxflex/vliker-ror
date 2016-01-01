@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
 
   # Get orders in stats
   def self.stats(user_id)
-    where(user_id: user_id).order(id: :desc)
+    where(user_id: user_id).order(done: :asc, id: :desc)
   end
 
   #

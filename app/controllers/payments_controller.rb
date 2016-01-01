@@ -10,7 +10,7 @@ class PaymentsController < ActionController::Base
     good = Good.find(order_data[0])
 
     # check sum
-    return if params[:amount].to_i < good.price
+    return if params[:amount].to_f.ceil < good.price
 
     # hash generate
     hash = [

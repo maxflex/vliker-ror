@@ -46,7 +46,7 @@ angular
       # https://money.yandex.ru/doc.xml?id=526991
       $scope.calculateSum = (sum) ->
         # a — коэффициент комиссии. При переводе из кошелька — 0,005, при переводе с карты — 0,02.
-        a = if $scope.payment_mode is 'PC' then .005 else .02
+        a = if $scope.payment_mode is 'PC' then .005 else .025
         sum + sum * (a / (1 + a))
 
       $scope.buy = (good) ->

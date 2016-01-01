@@ -83,4 +83,7 @@ Rails.application.configure do
 
   # Minimum task likes to be added to DB
   config.min_task_count    = 3
+
+  # Google Analytics
+  GA.tracker = "UA-71877450-1"
 end

@@ -1,6 +1,22 @@
-%center
-  %a.dashed-hover{:href => "http://vk.com/write#{Rails.configuration.support_id}", :style => "margin-bottom: 12px; display: block", :target => "_blank"}
-    %h4{:style => "margin-bottom: 3px"}
-      %span.glyphicon.glyphicon-envelope{:style => "top: 3px; margin-right: 5px"}>
-      Написать в поддержку клиентов
-  %iframe.comments-iframe{:frameborder => "no", :scrolling => "no", :src => "http://graffitistudio.ru/vliker_comments.php"}
+.center
+  .row
+    .col-sm-6
+      .apps_access_item
+        .apps_access_icon.apps_access_groups
+        %a.dashed-hover{:href => "https://vk.com/vliker_obmen", :target => "_blank"}
+          Мгновенный обмен лайками
+        .span.label.label-success.label-bonus{style: 'top: -12px'}
+          новое!
+
+    .col-sm-6
+      .apps_access_item
+        .apps_access_icon.apps_access_messages
+        %a.dashed-hover{:href => "http://vk.com/write#{Rails.configuration.support_id}", :target => "_blank"}
+          Написать в поддержку клиентов
+  .row
+    .col-sm-12
+      -# %a.dashed-hover{:href => "http://vk.com/write#{Rails.configuration.support_id}", :style => "margin-bottom: 12px; display: block", :target => "_blank"}
+      -#   %h4{:style => "margin-bottom: 3px"}
+      -#     %span.glyphicon.glyphicon-envelope{:style => "top: 3px; margin-right: 5px"}>
+      -#     Написать в поддержку клиентов
+      %iframe.comments-iframe{:frameborder => "no", :scrolling => "no", :src => "http://graffitistudio.ru/vliker_comments.php"}

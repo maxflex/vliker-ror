@@ -3,6 +3,8 @@
   %span
     %b +{{good.count | number}}
     {{good.good_type.title}}
+    %span.label.label-success.label-bonus{ng: {show: 'good.bonus'}}
+      +{{good.bonus}} бонус
   %button.btn.btn-primary.pull-right{ng: {click: 'buy(good)'}}
     %b {{good.price | number}}
     руб

@@ -46,10 +46,25 @@ angular
       task = $scope.tasks[task_index]
       $scope.last_clicked_task = task
       $window.open task.url
-      $http.post 'get_new',
-        task_id: task.id
-      .then (response) ->
+      $http.post('get_new').then (response) ->
         $scope.tasks[task_index] = response.data
+
+    ###
+    * Реклама группы
+    ###
+    $scope.group_clicked = if localStorage.getItem('group_clicked') is 'true' then true else false
+    $scope.groupClick = ->
+      # load task to the block
+      localStorage.setItem 'group_clicked', true
+      $scope.group_clicked = true
+      $('#group-ad').nifty 'show'
+
+    $scope.goGroup = ->
+      $window.open 'https://vk.com/vliker_obmen'
+      $('#group-ad').nifty 'hide'
+      # загружаем в 4 слот задачу
+      $http.post('get_new').then (response) ->
+        $scope.tasks[4] = response.data
 
     ###*
      * Report task

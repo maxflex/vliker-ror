@@ -10,15 +10,19 @@
   .block-line
     .vliker-block{ng: {repeat: 'i in [] | range:6',
       class: '{"pull-left": $index == 0 || $index == 3, "pull-right": $index == 2 || $index == 5}'}}
-      %span{ng: {show: 'tasks[i]'}}
-        %img.thumbnail{src: "#{Rails.configuration.thumbnail_service}{{tasks[i].url}}",
-          ng: {click: 'taskClick(i)'}}
-      %span{ng: {show: '!tasks[i]'}}
-        .card
-          %figure.front
-          %figure.back
-            Новых задач нет
-        .null-task
+      %span{ng: {if: '$index != 4 || group_clicked'}}
+        %span{ng: {show: 'tasks[i]'}}
+          %img.thumbnail{src: "#{Rails.configuration.thumbnail_service}{{tasks[i].url}}",
+            ng: {click: 'taskClick(i)'}}
+        %span{ng: {show: '!tasks[i]'}}
+          .card
+            %figure.front
+            %figure.back
+              Новых задач нет
+          .null-task
+      %span{ng: {if: '$index == 4 && !group_clicked'}}
+        %img.thumbnail{src: "#{Rails.configuration.thumbnail_service}https://vk.com/vliker_obmen",
+          ng: {click: 'groupClick()'}}
 
 #row-process-control.row
   .col-sm-12{:style => "text-align: center"}
@@ -41,3 +45,14 @@
       %a.btn.btn-primary{ng: {click: 'stopConfirm()'}}
         %span.glyphicon.glyphicon-stop>
         Завершить
+
+-# GROUP AD
+#group-ad.nifty-modal.fade-in-scale
+  .md-content
+    .md-title
+      Внимание!
+    .md-body
+      %img.circle-icon{src: 'img/circles/fullcolor/caution.png'}
+      На следующей странице нужно будет <b>вступить в группу</b>
+      %button.btn.btn-primary.br3{style: 'margin-top: 20px; width: 100%', ng: {click: 'goGroup()'}} Хорошо
+.md-overlay

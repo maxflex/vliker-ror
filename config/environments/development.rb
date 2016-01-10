@@ -43,7 +43,7 @@ Rails.application.configure do
   config.serve_static_files = false
   config.reload_classes_only_on_change = false
 
-  config.support_id        = '316834465'
+  config.support_id        = '343244650'
   config.thumbnail_service = 'http://mini.s-shot.ru/?'
 
   # Minimum task likes to be added to DB

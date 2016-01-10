@@ -78,7 +78,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.support_id        = '316834465'
+  config.support_id        = '343244650'
   config.thumbnail_service = 'http://mini.s-shot.ru/?'
 
   # Minimum task likes to be added to DB

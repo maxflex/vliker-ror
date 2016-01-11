@@ -72,7 +72,7 @@ angular
     $scope.reportTask = ->
       console.log $scope.task_report_ids
       if $scope.last_clicked_task
-        if _.contains($scope.task_report_ids, $scope.last_clicked_task.id)
+        if $scope.taskReported()
           notifySuccess 'Вы уже оставили жалобу на эту ссылку'
         else
           $scope.task_report_ids.push($scope.last_clicked_task.id)
@@ -80,6 +80,10 @@ angular
           notifySuccess 'Жалоба оставлена!'
       else
         notifyError 'Невозможно оставить жалобу – вы еще ничего не лайкнули'
+
+    $scope.taskReported = ->
+      return false if not $scope.last_clicked_task
+      _.contains($scope.task_report_ids, $scope.last_clicked_task.id)
 
     ###*
      * Stop

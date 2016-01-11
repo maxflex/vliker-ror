@@ -27,18 +27,12 @@
 #row-process-control.row
   .col-sm-12{:style => "text-align: center"}
     .btn-group.btn-group-justified
-      .btn-group{:role => "group"}
-        %a.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :role => "button"}
-          %span.glyphicon.glyphicon-flag>
-          Пожаловаться
-          %span.caret
-        %ul.dropdown-menu{:role => "menu"}
-          %li
-            %a{ng: {click: 'reportTask()'}} Страница была недоступна
-          %li
-            %a{ng: {click: 'reportTask()'}} Страница уже отображалась
-          %li
-            %a{ng: {click: 'reportTask()'}} Спам
+      %a.btn.btn-primary{ng: {click: 'reportTask()', disabled: 'taskReported()'}}
+        %span.glyphicon.glyphicon-flag>
+        %span{ng: {show: 'taskReported()'}}
+          Жалоба отправлена
+        %span{ng: {show: '!taskReported()'}}
+          Страница была недоступна
       %a.btn.btn-primary.likes-count{:style => "cursor: default"}
         %span.glyphicon.glyphicon-heart
         %b#likes-count {{current_task.need}}

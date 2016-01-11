@@ -98,7 +98,7 @@ class Task < ActiveRecord::Base
   # Add likes to OWN current task
   #
   def add_needed(count)
-    return false if count == 0
+    return false if count == 0 || self.reports >= 3
 
     self.need ||= 0
     self.need += count

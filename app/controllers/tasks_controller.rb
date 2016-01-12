@@ -109,6 +109,7 @@ class TasksController < ApplicationController
         likes_count += params[:task_report_ids].length
       end
 
+      # add to own task
       task.add_needed(likes_count)
 
       # remember the last task so its offered instead of example url

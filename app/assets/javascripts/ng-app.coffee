@@ -13,7 +13,7 @@ angular
     $rootScope.$on '$routeChangeStart', (event, next, prev) ->
       $rootScope.menu = next.$$route.menu
       # top animation only if current menu is sent and previous isn't
-      # (animate only if going from main page)
+      # (animate only if going from main page) 1
       topAnimation() if $rootScope.menu and (prev is undefined or not prev.$$route.menu)
   .factory 'setMenu', ($rootScope, $location) ->
     (menu_id) ->

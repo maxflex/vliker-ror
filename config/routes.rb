@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # resources :gift_codes
   get 'user/user_id'
 
   mount RailsAdmin::Engine => '/mer', as: 'rails_admin'
@@ -11,8 +12,16 @@ Rails.application.routes.draw do
     post 'stats'    => :stats
   end
 
+  resource :tasks, only: [] do
+    get :all
+  end
+
   resource :goods, controller: 'store', only: [] do
     get :all
+  end
+
+  resource :gift_codes, only: [] do
+    get :check
   end
 
   resources :reviews

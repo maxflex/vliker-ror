@@ -142,6 +142,7 @@ GEM
     minitest (5.8.3)
     multi_json (1.11.2)
     multi_test (0.1.2)
+    mysql2 (0.3.20)
     nested_form (0.3.2)
     ng-rails-csrf (0.1.0)
     nokogiri (1.6.7)
@@ -299,6 +300,7 @@ DEPENDENCIES
   hirb-unicode
   jbuilder (~> 2.0)
   jquery-rails
+  mysql2 (~> 0.3.13)
   ng-rails-csrf
   nokogiri
   pg
@@ -320,4 +322,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.10.5
+   1.11.2

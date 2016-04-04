@@ -5,6 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
+    # adapter: mysql2
+    # encoding: utf8
+    # username: root
+    # # timeout: 5000
+    # # port: 5432
+    # password: root
+    # database: vliker_development
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
@@ -16,6 +23,9 @@ default: &default
 
 development:
   <<: *default
+  # adapter: mysql2
+  # encoding: utf8
+  # username: root
   timeout: 5000
   port: 5432
   password: root

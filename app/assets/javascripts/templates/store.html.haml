@@ -1,3 +1,4 @@
+-# %all-tasks{tasks: 'tasks', 'none-text' => 'Данных нет'}
 .store-jumbotrons
   %li
     .jumbotron.jumbotron-success.center
@@ -57,9 +58,18 @@
           %div{ng: {repeat: 'payment_type in payment_types', click: 'proceedPayment(payment_type)'}}
             %img{src: 'img/ps/{{payment_type.logo}}_logo.png'}
             %span {{payment_type.name}}
-          %div
-            %img{src: 'img/ps/gift_red.png'}
-            %span Подарочный код
+-# Ввод подарочного кода
+#gift-code.modal
+  .modal-dialog
+    .modal-content
+      .modal-header.center
+        {{ giftCodeName }}
+      .modal-body
+        .input-group
+          %input.form-control{placeholder: 'Введите подарочный код', ng: {model: 'gift_code'}}
+          %span.input-group-btn
+            %button.btn.btn-primary{ng: {click: 'giftCodeActive()'}}
+              активировать
 
 -# Ввод ссылки для покупки
 #enter-link.modal

@@ -1,0 +1,3 @@
+%h1{'ng-repeat' => 'task in tasks'}
+    Task {{ task.id }}: {{ task.url }} , {{ active }}
+%h1{'ng-show' => '!tasks || tasks.length == 0'} {{ noneText }}

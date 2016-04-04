@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Good:
+  = @gift_code.good
+%p
+  %b Code:
+  = @gift_code.code
+%p
+  %b Activated:
+  = @gift_code.activated
+%p
+  %b User:
+  = @gift_code.user
+
+= link_to 'Edit', edit_gift_code_path(@gift_code)
+\|
+= link_to 'Back', gift_codes_path

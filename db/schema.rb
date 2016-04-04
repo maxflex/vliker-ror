@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230130240) do
+ActiveRecord::Schema.define(version: 20160404124628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gift_codes", force: :cascade do |t|
+    t.integer  "good_id"
+    t.string   "code"
+    t.boolean  "activated",  default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "gift_codes", ["good_id"], name: "index_gift_codes_on_good_id", using: :btree
+  add_index "gift_codes", ["user_id"], name: "index_gift_codes_on_user_id", using: :btree
 
   create_table "good_types", force: :cascade do |t|
     t.string   "title"
@@ -91,6 +103,8 @@ ActiveRecord::Schema.define(version: 20151230130240) do
     t.datetime "updated_at",                     null: false
   end
 
+  add_foreign_key "gift_codes", "goods"
+  add_foreign_key "gift_codes", "users"
   add_foreign_key "goods", "good_types"
   add_foreign_key "orders", "goods"
   add_foreign_key "orders", "users"

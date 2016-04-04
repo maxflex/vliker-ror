@@ -1,5 +1,11 @@
 angular
   .module "VLiker"
+  .directive 'allTasks', ->
+    restrict: 'E'
+    templateUrl: 'directives/all-tasks.html'
+    scope:
+      tasks: '='
+      noneText: '@'
   .directive 'storeItems', ->
     restrict: 'E'
     templateUrl: 'directives/store-items.html'
@@ -7,6 +13,14 @@ angular
       $scope.current_page = 1
       slider = undefined
       $scope.goods = goods
+      $scope.giftCodeName = 'Подарочный код'
+      $http.get '/tasks/all'
+        .then (response) ->
+          console.log "response>>", response
+          $scope.tasks = response.data
+
+
+
 
       # PC — оплата со счета в Яндекс.Деньгах
       # AC — оплата с банковской карты
@@ -27,6 +41,11 @@ angular
           name: 'Visa QIWI Wallet'
           logo: 'kiwipurse'
           short: 'qiwi'
+        ,
+          id: 4
+          name: 'Подарочный код'
+          logo: 'gift'
+          short: 'gift'
       ]
 
       $scope.$watch 'current_page', (newVal, oldVal) ->
@@ -59,14 +78,21 @@ angular
         $('#payment-methods').modal 'show'
         false
 
+      $scope.giftCodeActive = ->
+        sendGiftCode()
+
       $scope.proceedPayment = (payment_type) ->
         # Создаем пользователя только после того, как он нажал "купить"
         if !$scope.user_id then getUserId() else updateFormParams()
         # Если оплата Яндексом, определяем метод оплаты (карта или яд)
-        if payment_type.id in [1..2] then setYandexMethod(payment_type.id)
-        postForm(payment_type.short)
-
-
+        # if payment_type.id in [1..2] then setYandexMethod(payment_type.id)
+        # postForm(payment_type.short)
+        switch payment_type.id
+          when [1..2]
+            setYandexMethod(payment_type.id)
+            postForm(payment_type.short)
+          when 4
+            setGift()
 
       #### ФУНКЦИИ ГЕНЕРАЦИИ ПЛАТЕЖА ####
 
@@ -97,3 +123,18 @@ angular
             postForm(short)
           else
             $("#form-#{short}").submit()
+
+      setGift = ->
+        $('#payment-methods').modal 'hide'
+        $('#gift-code').modal 'show'
+        false
+
+      sendGiftCode = ->
+        code = $scope.gift_code
+        console.log 'test'
+        $http.post '/gift_codes/check',
+          code: code
+          good_id: $scope.buying_good.id
+        .then (response) ->
+          $scope.giftCodeName = response.data.text
+          console.log 'gift code>>>', response

@@ -133,4 +133,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def all
+    @tasks = Task.all
+    # respond_to do |format|
+    #   format.json {render :json => Task.all}
+    # end
+  end
+
 end

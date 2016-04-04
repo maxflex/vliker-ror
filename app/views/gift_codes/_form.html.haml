@@ -1,0 +1,11 @@
+= simple_form_for(@gift_code) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :good
+    = f.input :code
+    = f.input :activated
+    = f.association :user
+
+  .form-actions
+    = f.button :submit

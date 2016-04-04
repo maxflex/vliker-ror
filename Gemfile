@@ -62,6 +62,8 @@ gem 'pg'
 gem 'rack-attack'
 gem "font-awesome-rails"
 
+
+
 group :production do
   # gem 'rails_12factor'
   gem 'unicorn'
@@ -70,6 +72,8 @@ end
 group :development, :test do
   gem 'hirb-unicode'
 
+  # developmet from mysql
+  gem 'mysql2', '~> 0.3.13'
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
 

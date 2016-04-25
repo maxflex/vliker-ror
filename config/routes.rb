@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resource :tasks, only: [] do
     get :all
+    post :stop_task
   end
 
   resource :goods, controller: 'store', only: [] do
@@ -21,7 +22,11 @@ Rails.application.routes.draw do
   end
 
   resource :gift_codes, only: [] do
-    get :check
+    post :check
+  end
+
+  resource :reviews, only: [] do
+    post :getReviews
   end
 
   resources :reviews
@@ -33,6 +38,7 @@ Rails.application.routes.draw do
 
   controller :users, only: [] do
     get 'user_id'
+    post :check_vip
   end
 
   # resources :tasks, only: [] do

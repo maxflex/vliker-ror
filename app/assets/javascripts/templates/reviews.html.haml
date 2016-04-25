@@ -24,14 +24,16 @@
 -# LOADING
 %center.margin-200{ng: {show: 'Reviews === undefined'}}
   = inline_svg('three-dots')
-
-%div{ng: {repeat: 'Review in Reviews'}}
-  %section.comments
-    .animated{ng: {class: "$index % 2 == 0 ? 'from-me fadeInRight' : 'from-them fadeInLeft'"}}
-      %p {{Review.text}}
-      %div.review-link
-        %span
-          +{{Review.order.good.count | number}} {{Review.order.good.good_type.title}}
-        %span.pull-left.review-time{'am-time-ago' => 'Review.created_at', 'ng-show' => 'Review.id > 7'}
-        %a{target: '_blank', href: '{{Review.order.link}}'} {{Review.order.link}}
-    .clear
+%div{"infinite-scroll" => 'loadMore()', "infinite-scroll-distance" => '1'}
+  %div{ng: {repeat: 'Review in Reviews'}}
+    %section.comments
+      -# .animated{ng: {class: "$index % 2 == 0 ? 'from-me fadeInRight' : 'from-them fadeInLeft'"}}
+      .animated{'ng-class-even' => 'class_even', 'ng-class-odd' => "'from-them fadeInLeft'"}
+        %p {{Review.text}}
+        %div.review-link
+          %span
+            +{{Review.order.good.count | number}} {{Review.order.good.good_type.title}}
+          %span.pull-left.review-time{'am-time-ago' => 'Review.created_at', 'ng-show' => 'Review.id > 7'}
+          %a{target: '_blank', href: '{{Review.order.link}}'} {{Review.order.link}}
+      .clear
+    #comments{'zum-waypoint' => 'waypoints', down: 'testfunc'}

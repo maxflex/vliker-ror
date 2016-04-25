@@ -13,6 +13,18 @@ angular
     $scope.task_data = []
     $scope.task_report_ids = []
     $scope.div_blocked = false
+    $scope.reportTaskCount = 0
+    userVip = false;
+
+    $scope.checkVip = ->
+      $http.get 'user_id'
+        .then (response) ->
+          $scope.user_id = response.data
+          $http.post 'check_vip',
+            id: $scope.user_id
+          .then (response) ->
+            response.data
+
 
     $window.onfocus = ->
       # activate the window
@@ -70,16 +82,25 @@ angular
      * Report task
     ###
     $scope.reportTask = ->
+      userVip = $scope.checkVip()
       console.log $scope.task_report_ids
       if $scope.last_clicked_task
         if $scope.taskReported()
           notifySuccess 'Вы уже оставили жалобу на эту ссылку'
         else
-          $scope.task_report_ids.push($scope.last_clicked_task.id)
-          $scope.task_data.pop()
-          notifySuccess 'Жалоба оставлена!'
+          if $scope.reportTaskCount > 2 && userVip == false
+            notifyError 'Вы можете оставить не более 3х жалоб'
+          else
+            if $scope.reportTaskCount > 10
+              notifyError 'Вы можете оставить не более 10ти жалоб'
+            else
+              $scope.task_report_ids.push($scope.last_clicked_task.id)
+              $scope.task_data.pop()
+              notifySuccess 'Жалоба оставлена!'
+              $scope.reportTaskCount++
       else
         notifyError 'Невозможно оставить жалобу – вы еще ничего не лайкнули'
+
 
     $scope.taskReported = ->
       return false if not $scope.last_clicked_task

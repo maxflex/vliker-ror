@@ -43,5 +43,9 @@
 //= require moment/min/moment.min
 //= require moment/locale/ru
 //= require angular-moment/angular-moment.min
+//= require waypoints/lib/jquery.waypoints.min
+//= require ngInfiniteScroll/build/ng-infinite-scroll.min
+//= require angular-waypoints/dist/angular-waypoints.all.min
+//= require ngInfiniteScroll/build/ng-infinite-scroll.min
 //
 //= require_tree .

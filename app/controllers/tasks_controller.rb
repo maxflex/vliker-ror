@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   include UserAuth
-
+  skip_before_filter :verify_authenticity_token
   #
   # Start VLiker and get 6 tasks
   #
@@ -37,6 +37,15 @@ class TasksController < ApplicationController
         format.html {render :json => @task.errors.full_messages, status: :unprocessable_entity}
         format.json {render :json => @task.errors.full_messages, status: :unprocessable_entity}
       end
+    end
+  end
+
+  def stop_task
+    task = Task.find_by(url: params[:url])
+    task.active = false
+    task.save
+    respond_to do |format|
+      format.json {render :json => nil, status: :ok}
     end
   end
 

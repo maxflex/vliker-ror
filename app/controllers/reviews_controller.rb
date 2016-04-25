@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     @reviews = Review.order(id: :desc).all
     respond_to do |format|
@@ -21,6 +22,16 @@ class ReviewsController < ApplicationController
       else
         format.json { render :json => false, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def getReviews
+    reviews = Review.where(status: 0).limit(params[:limit]).offset(params[:offset]).order(created_at: :desc)
+    # respond_to do |format|
+    #     format.json { render :json => {reviews: reviews }}
+    # end
+    respond_to do |format|
+      format.json { render :json => reviews.to_json(:include => {:order => {:include => {:good => {:include => :good_type}}}}) }
     end
   end
 

@@ -62,14 +62,15 @@ class GiftCodesController < ApplicationController
   end
 
   def check
-    gift_code = GiftCode.find_by(code: params[:code], good_id: params[:good_id], activated: false)
+    # gift_code = GiftCode.find_by(code: params[:code], good_id: params[:good_id], activated: false)
+    gift_code = GiftCode.find_by(code: params[:code], activated: false)
     respond_to do |format|
       if gift_code.nil?
-        format.json {render :json => {text: 'Ошибка. Введен неверный или активированый код'}}
+        format.json {render json: {text: 'Ошибка. Введен неверный или активированый код'}, status: :unprocessable_entity}
       else
         # gift_code.activated = true
         # gift_code.save
-        format.json {render :json => {text: gift_code.good.full_name}}
+        format.json {render json: {text: 'Спасибо! Код для ' + gift_code.good.full_name + ' активирован!' }, status: :ok}
       end
     end
   end

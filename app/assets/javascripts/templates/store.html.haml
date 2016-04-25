@@ -68,8 +68,13 @@
         .input-group
           %input.form-control{placeholder: 'Введите подарочный код', ng: {model: 'gift_code'}}
           %span.input-group-btn
-            %button.btn.btn-primary{ng: {click: 'giftCodeActive()'}}
+            %button.btn.btn-primary{ng: {click: 'sendGiftCode()'}}
               активировать
+        .row
+          %center.success
+            {{ success }}
+          %center.errors
+            {{ errors }}
 
 -# Ввод ссылки для покупки
 #enter-link.modal

@@ -31,6 +31,11 @@ class PaymentsController < ActionController::Base
     # puts params[:sha1_hash].colorize :green
     return if Digest::SHA1.hexdigest(hash) != params[:sha1_hash]
 
+    # add status vip to user who`s buy someone
+    user = User.find(order_data[2])
+    user.vip = true
+    user.save
+
     order = Order.new(good_id: order_data[0], link: order_data[1], user_id: order_data[2])
     order.external_order
 

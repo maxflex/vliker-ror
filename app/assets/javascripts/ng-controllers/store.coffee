@@ -14,6 +14,7 @@ angular
       slider = undefined
       $scope.goods = goods
       $scope.giftCodeName = 'Подарочный код'
+
       $http.get '/tasks/all'
         .then (response) ->
           console.log "response>>", response
@@ -78,17 +79,16 @@ angular
         $('#payment-methods').modal 'show'
         false
 
-      $scope.giftCodeActive = ->
-        sendGiftCode()
-
       $scope.proceedPayment = (payment_type) ->
         # Создаем пользователя только после того, как он нажал "купить"
         if !$scope.user_id then getUserId() else updateFormParams()
         # Если оплата Яндексом, определяем метод оплаты (карта или яд)
         # if payment_type.id in [1..2] then setYandexMethod(payment_type.id)
         # postForm(payment_type.short)
+
+        # @todo: Разобраться с оплатой банковской картой, switch .. when
         switch payment_type.id
-          when [1..2]
+          when 1,2
             setYandexMethod(payment_type.id)
             postForm(payment_type.short)
           when 4
@@ -129,12 +129,20 @@ angular
         $('#gift-code').modal 'show'
         false
 
-      sendGiftCode = ->
+      $scope.sendGiftCode = ->
+        $scope.success = ''
+        $scope.errors = ''
+
         code = $scope.gift_code
         console.log 'test'
         $http.post '/gift_codes/check',
           code: code
           good_id: $scope.buying_good.id
-        .then (response) ->
-          $scope.giftCodeName = response.data.text
-          console.log 'gift code>>>', response
+        .success (response) ->
+          console.log 'response>>>>', response
+          $scope.success = response.text
+        .error (response) ->
+          $scope.errors = response.text
+        # .then (response) ->
+        #   $scope.giftCodeName = response.data.text
+        #   console.log 'gift code>>>', response

@@ -18,6 +18,10 @@ class Order < ActiveRecord::Base
     where(user_id: user_id).order(done: :asc, id: :desc)
   end
 
+  # def self.make_user_vip
+  #
+  # end
+
   #
   # CRON: Update status
   #

@@ -1,5 +1,5 @@
 -# ORDERS
-.row.stats-row{ng: {repeat: 'order in orders track by $index'}}
+.row.stats-row{ng: {repeat: "order in orders track by $index | orderBy:priority:reverse"}}
   .col-sm-4
     .vliker-block.fit-width
       %a{href: '{{order.link}}', target: '_blank'}
@@ -52,6 +52,8 @@
           %span{ng: {show: 'task.queue > 1'}} {{task.queue}}<sup>й</sup> в очереди
         %span{ng: {show: '!task.queue'}}
           В процессе
+      %button.btn.btn-default.pull-right{ng: {click: 'stop(task)'}, style: 'padding: 0 10px'}
+        Стоп
 
       -# NOT ACTIVE
       %span{ng: {show: '!task.active'}}

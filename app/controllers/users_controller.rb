@@ -16,4 +16,16 @@ class UsersController < ApplicationController
       format.json { render :json => user.id }
     end
   end
+
+  def check_vip
+    user = User.find(params[:id])
+    respond_to do |format|
+      if user.vip === true
+        format.json { render :json => true }
+      else
+        format.json { render :json => false }
+      end
+    end
+
+  end
 end

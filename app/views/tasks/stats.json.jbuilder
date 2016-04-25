@@ -1,5 +1,5 @@
 json.tasks @tasks do |task|
-  json.(task, :likes, :need, :active, :reports, :url, :queue)
+  json.(task, :likes, :need, :active, :reports, :url, :queue, :priority)
 end
 
 json.orders @orders do |order|
